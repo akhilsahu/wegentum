@@ -5,7 +5,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8" />
-    <title>Wegentum Login</title>
+    <title>BCORE Admin Dashboard Template | Dashboard </title>
      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -21,9 +21,9 @@
     <!--END GLOBAL STYLES -->
 
     <!-- PAGE LEVEL STYLES -->
-    <link href="<?php echo base_url(); ?>/assets/css/layout2.css" rel="stylesheet" />
-       <link href="<?php echo base_url(); ?>/assets/plugins/flot/examples/examples.css" rel="stylesheet" />
-       <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/plugins/timeline/timeline.css" />
+    <link href="<?php echo base_url(); ?>assets/css/layout2.css" rel="stylesheet" />
+       <link href="<?php echo base_url(); ?>assets/plugins/flot/examples/examples.css" rel="stylesheet" />
+       <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/timeline/timeline.css" />
     <!-- END PAGE LEVEL  STYLES -->
      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -51,7 +51,10 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                   <a href="<?php echo site_url(); ?>"><hi>WEGENTUM</h1>LOGIN</a>
+                    <a href="index.php" class="navbar-brand">
+                    <img src="assets/img/logo.png" alt="" />
+                        
+                        </a>
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -279,7 +282,7 @@
                             <li><a href="#"><i class="icon-gear"></i> Settings </a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="<?php echo site_url();?>/auth/logout"><i class="icon-signout"></i> Logout </a>
+                            <li><a href="login.html"><i class="icon-signout"></i> Logout </a>
                             </li>
                         </ul>
 

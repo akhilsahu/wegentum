@@ -1,107 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- BEGIN HEAD -->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="msapplication-tap-highlight" content="no">
-  <!--<meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. ">
-  <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">-->
-  <title>Login Page | DadDirectory</title>
-
-  <!-- Favicons-->
-  <!--<link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">-->
-
-
-  
-  
-  <link href="<?php echo base_url();?>assets_admin/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>assets_admin/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">   
-    <link href="<?php echo base_url();?>assets_admin/css/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>assets_admin/css/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>assets_admin/css/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="<?php echo base_url();?>assets_admin/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
+     <meta charset="UTF-8" />
+    <title>Wegentum| Login Page</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <!-- GLOBAL STYLES -->
+     <!-- PAGE LEVEL STYLES -->
+     <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/css/login.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>/assets/plugins/magic/magic.css" />
+     <!-- END PAGE LEVEL STYLES -->
+   <!-- HTML5 shim and Respond.js I	E8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
+    <!-- END HEAD -->
 
-<body class="cyan">
-  <!-- Start Page Loading -->
-  <div id="loader-wrapper">
-      <div id="loader"></div>        
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
-  </div>
-  <!-- End Page Loading -->
+    <!-- BEGIN BODY -->
+<body >
 
-
-
-  <div id="login-page" class="row">
-    <div class="col s12 z-depth-4 card-panel">
-      <form id="login_form" class="login-form" method="post" action="<?php echo site_url();?>/user/adminlogin" enctype="multipart/form-data">
-        <div class="row">
-          <div class="input-field col s12 center">
-            <img src="<?php echo base_url()."images/logo.png"?>" alt="" class=" responsive-img">
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
-            <input id="username" type="text" name="txt_email"  class="required">
-            <label for="username" class="center-align">Username</label>
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
-            <input id="password" type="password" name="txt_password" class="required">
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <!--<div class="row">          
-          <div class="input-field col s12 m12 l12  login-text">
-              <input type="checkbox" id="remember-me" />
-              <label for="remember-me">Remember me</label>
-          </div>
-        </div>-->
-        <div class="row">
-          <div class="input-field col s12">
-            <a id="login_btn" href="#" class="btn waves-effect waves-light col s12">Login</a>
-          </div>
-        </div>
-        <div class="row">
-          <!--<div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="page-register.html">Register Now!</a></p>
-          </div>
-          <div class="input-field col s6 m6 l6">
-              <p class="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
-          </div>-->          
-        </div>
-
-      </form>
+   <!-- PAGE CONTENT --> 
+    <div class="container">
+    <div class="text-center">
+        <a href="<?php echo site_url(); ?>"><hi>WEGENTUM</h1>LOGIN</a>
     </div>
-  </div>
+    <div class="tab-content">
+        <div id="login" class="tab-pane active">
+            <form action="<?php echo site_url(); ?>/auth/verify" class="form-signin" enctype="multipart/form-data" method="post">
+                <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                    Enter your Username and Password
+                </p>
+                <input type="text" placeholder="Username" class="form-control" name="email" />
+                <input type="password" placeholder="Password" class="form-control" name="password" />
+                <button class="btn text-muted text-center btn-danger" type="submit">Sign in</button>
+            </form>
+        </div>
+        <div id="forgot" class="tab-pane">
+            <form action="index.html" class="form-signin">
+                <p class="text-muted text-center btn-block btn btn-primary btn-rect">Enter your valid e-mail</p>
+                <input type="email"  required="required" placeholder="Your E-mail"  class="form-control" />
+                <br />
+                <button class="btn text-muted text-center btn-success" type="submit">Recover Password</button>
+            </form>
+        </div>
+        <div id="signup" class="tab-pane">
+            <form action="index.html" class="form-signin">
+                <p class="text-muted text-center btn-block btn btn-primary btn-rect">Please Fill Details To Register</p>
+                 <input type="text" placeholder="First Name" class="form-control" />
+                 <input type="text" placeholder="Last Name" class="form-control" />
+                <input type="text" placeholder="Username" class="form-control" />
+                <input type="email" placeholder="Your E-mail" class="form-control" />
+                <input type="password" placeholder="password" class="form-control" />
+                <input type="password" placeholder="Re type password" class="form-control" />
+                <button class="btn text-muted text-center btn-success" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <div class="text-center">
+        <ul class="list-inline">
+            <li><a class="text-muted" href="#login" data-toggle="tab">Login</a></li>
+            <li><a class="text-muted" href="#forgot" data-toggle="tab">Forgot Password</a></li>
+            <li><a class="text-muted" href="#signup" data-toggle="tab">Signup</a></li>
+        </ul>
+    </div>
 
 
+</div>
 
-  
-  <script type="text/javascript" src="<?php echo base_url();?>assets_admin/js/jquery-1.11.2.min.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function(){
-	$("#login_btn").click(function(){
-		if($("#username").val()==""){$("#username").focus();return false;}
-		if($("#password").val()==""){$("#password").focus();return false;}
-		$("#login_form").submit();
-	});
-  });
-  </script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets_admin/js/materialize.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets_admin/js/prism.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets_admin/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-  <script type="text/javascript" src="<?php echo base_url();?>assets_admin/js/plugins.js"></script>
-  
+	  <!--END PAGE CONTENT -->     
+	      
+      <!-- PAGE LEVEL SCRIPTS -->
+      <script src="assets/plugins/jquery-2.0.3.min.js"></script>
+      <script src="assets/plugins/bootstrap/js/bootstrap.js"></script>
+   <script src="assets/js/login.js"></script>
+      <!--END PAGE LEVEL SCRIPTS -->
 
 </body>
+    <!-- END BODY -->
 </html>
