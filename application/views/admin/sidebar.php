@@ -45,7 +45,7 @@
                     <ul class="collapse" id="component-nav">
                        
                         <li class=""><a href="<?php echo site_url();?>/admin/addemp"><i class="icon-angle-right"></i> Add </a></li>
-                         <li class=""><a href="icon.html"><i class="icon-angle-right"></i>Manage </a></li>
+                         <li class=""><a href="<?php echo site_url();?>/admin/emp_list"><i class="icon-angle-right"></i>Manage </a></li>
                         <!--<li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress </a></li>
                        <li class=""><a href="tabs_panels.html"><i class="icon-angle-right"></i> Tabs & Panels </a></li>
                         <li class=""><a href="notifications.html"><i class="icon-angle-right"></i> Notification </a></li>
@@ -71,7 +71,7 @@
                     </a>
                     <ul class="collapse" id="form-nav">
                         <li class=""><a href="<?php echo site_url();?>/admin/addcli"><i class="icon-angle-right"></i> Add</a></li>
-                        <li class=""><a href="forms_advance.html"><i class="icon-angle-right"></i> Manage </a></li>
+                        <li class=""><a href="<?php echo site_url();?>/admin/cli_list"><i class="icon-angle-right"></i> Manage </a></li>
                  
                     </ul>
                 </li>
