@@ -56,7 +56,7 @@
                 <hr />
                    <!-- CHART & CHAT  SECTION -->
                  <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Real Time Traffic
@@ -72,133 +72,7 @@
                     </div>
 
                     
-                     <div class="col-lg-4">
-
-                        <div class="chat-panel panel panel-primary">
-                            <div class="panel-heading">
-                                <i class="icon-comments"></i>
-                                Chat
-                            <div class="btn-group pull-right">
-                                <button type="button" data-toggle="dropdown">
-                                    <i class="icon-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-refresh"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class=" icon-comment"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-time"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-tint"></i> Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="icon-signout"></i> Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            </div>
-
-                            <div class="panel-body">
-                                <ul class="chat">
-                                    <li class="left clearfix">
-                                        <span class="chat-img pull-left">
-                                            <img src="assets/img/1.png" alt="User Avatar" class="img-circle" />
-                                        </span>
-                                        <div class="chat-body clearfix">
-                                            <div class="header">
-                                                <strong class="primary-font"> Jack Sparrow </strong>
-                                                <small class="pull-right text-muted">
-                                                    <i class="icon-time"></i> 12 mins ago
-                                                </small>
-                                            </div>
-                                             <br />
-                                            <p>
-                                                Lorem ipsum dolor sit amet, bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="right clearfix">
-                                        <span class="chat-img pull-right">
-                                            <img src="assets/img/2.png" alt="User Avatar" class="img-circle" />
-                                        </span>
-                                        <div class="chat-body clearfix">
-                                            <div class="header">
-                                                <small class=" text-muted">
-                                                    <i class="icon-time"></i> 13 mins ago</small>
-                                                <strong class="pull-right primary-font"> Jhony Deen</strong>
-                                            </div>
-                                            <br />
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur a dolor, quis ullamcorper ligula sodales.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="left clearfix">
-                                        <span class="chat-img pull-left">
-                                            <img src="assets/img/3.png" alt="User Avatar" class="img-circle" />
-                                        </span>
-                                        <div class="chat-body clearfix">
-                                            <div class="header">
-                                                <strong class="primary-font"> Jack Sparrow </strong>
-                                                <small class="pull-right text-muted">
-                                                    <i class="icon-time"></i> 12 mins ago
-                                                </small>
-                                            </div>
-                                             <br />
-                                            <p>
-                                                Lorem ipsum dolor sit amet, bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="right clearfix">
-                                        <span class="chat-img pull-right">
-                                            <img src="assets/img/4.png" alt="User Avatar" class="img-circle" />
-                                        </span>
-                                        <div class="chat-body clearfix">
-                                            <div class="header">
-                                                <small class=" text-muted">
-                                                    <i class="icon-time"></i> 13 mins ago</small>
-                                                <strong class="pull-right primary-font"> Jhony Deen</strong>
-                                            </div>
-                                            <br />
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur a dolor, quis ullamcorper ligula sodales.
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="panel-footer">
-                                <div class="input-group">
-                                    <input id="Text1" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-warning btn-sm" id="Button1">
-                                            Send
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
+                     
                 </div>
                  <!--END CHAT & CHAT SECTION -->
                  <!-- COMMENT AND NOTIFICATION  SECTION -->
