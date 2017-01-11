@@ -1,54 +1,83 @@
-<!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-         <div class="box box-primary">
-                <div class="box-header">
-                  <h3 class="box-title"> Employee Registration Form</h3>
-                </div><!-- /.box-header -->
-                <!-- form start -->
-                <form role="form" action="<?php echo site_url(); ?>/home/submit" method="post">
-                  <div class="box-body">
-				  
-				  <div class="form-group">
-                      <label for="exampleInputPassword1">Name</label>
-                      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                    </div>
-					<div class="form-group">
-                      <label for="exampleInputEmail1">Email</label>
-                      <input type="email" class="form-control" id="Email" name="email" placeholder="Enter email">
-                    </div>
-					<div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="Password" name="password" placeholder="Password">
-                    </div>
-					<div class="form-group">
-                      <label for="exampleInputPassword1">Phone NO:</label>
-                      <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone No:">
-                    </div>
-					<div class="form-group">
-                      <label for="exampleInputPassword1">Address</label>
-                      <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Last Package</label>
-                      <input type="text" class="form-control" id="package" name="lpackage" placeholder="Package">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Last Company Name</label>
-                      <input type="text" class="form-control" id="company" name="lcname"placeholder="Company Name">
-                    </div>
-					<div class="form-group">
-                      <label for="exampleInputPassword1">Gender</label>
-                      <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">
-                    </div>
-					
+ <div id="content">
+           
+                <div class="inner">
+                    <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">ADD Employee</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                       
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" action="<?php echo site_url(); ?>/admin/submit_employee" method="post">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input class="form-control" placeholder="Enter Name" name="name">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email ID</label>
+                                            <input class="form-control" placeholder="Enter Email Id" name="email">
+                                        </div>
+										 <div class="form-group">
+                                            <label>Phone No</label>
+                                            <input class="form-control" placeholder="Enter Phone No." name="phone">
+                                        </div>
+										 <div class="form-group">
+                                            <label>Password</label>
+                                            <input class="form-control" placeholder="Enter Password"
+											name="password">
+                                        </div>
+										<div class="form-group">
+                                            <label>Designation</label>
+                                            <input class="form-control" placeholder="Enter Designation" name="designation">
+                                     </div>
+									 <div class="form-group">
+                                            <label>Address</label>
+                                            <input class="form-control" placeholder="Enter Address" name="address">
+                                     </div>
+									 <div class="form-group">
+                                            <label>Last Company Package</label>
+                                            <input class="form-control" placeholder="Enter Last Company Package" type="text" name="lcpackage">
+                                     </div>
+									 <div class="form-group">
+                                            <label>Last Company</label>
+                                            <input class="form-control" placeholder="Enter Last Company" name="lcname">
+                                     </div>
+									 <div class="form-group">
+                                            <label>Gender</label>
+                                            <input type="radio" id="gender_male" name="gender" value="male" class="form-control"><label for="gender_male">Male</label>
+											 <input type="radio" id="gender_female" name="gender" value="female" class="form-control"><label for="gender_female">Female</label>
+                                     </div>
+										 <div class="form-group">
+                                            <label>Date</label>
+                                            <input type="date" class="form-control" placeholder="Enter Date" name="date">
+                                     </div>
+									  
+									 
+                                      <div>
                                        
-                  </div><!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </form>
-              </div>
-			  </div>
-
-            
+                                        <button type="submit" class="btn btn-default">Submit Button</button>
+                                        <button type="reset" class="btn btn-default">Reset Button</button>
+										</div>
+                                    </form>
+                                </div>
+                               
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    
+                    </div>
+                    
+                    
+                    
+ </div>
+                </div>
