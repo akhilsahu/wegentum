@@ -1,9 +1,7 @@
 <?php (defined('BASEPATH')) OR exit('No direct script access allowed');
-
 class auth extends CI_Controller{
 
-function auth() 
-	{
+    function auth(){
         parent::__construct();
 		
 		//$this->load->library('session');
@@ -17,11 +15,9 @@ function auth()
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
 
-function index()
-	{
-			$this->load->view('admin/login');
-		
-	}
+    function index(){
+        $this->load->view('admin/login');
+    }
 	
 	function verify()
 	{
@@ -61,12 +57,11 @@ function index()
 		}
 }
 	
-	function logout()
-	{
-		$this->session->unset_userdata('user');
-		$this->session->sess_destroy();
-		//print_r($user);exit;
-		redirect('auth/index',refresh);
-	}
+    function logout()
+    {
+            $this->session->unset_userdata('user');
+            $this->session->sess_destroy();
+            redirect('auth/index',refresh);
+    }
 }
 	?>
