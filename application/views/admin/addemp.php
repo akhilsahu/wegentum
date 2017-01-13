@@ -50,8 +50,8 @@
                                      </div>
 									 <div class="form-group">
                                             <label>Gender</label>
-                                            <input type="radio" id="gender_male" name="gender" value="male" class="form-control"><label for="gender_male">Male</label>
-											 <input type="radio" id="gender_female" name="gender" value="female" class="form-control"><label for="gender_female">Female</label>
+                                            <input type="radio" id="gender_male" name="gender" value="male"><label for="gender_male">Male</label>
+											 <input type="radio" id="gender_female" name="gender" value="female"><label for="gender_female">Female</label>
                                      </div>
 										 <div class="form-group">
                                             <label>Date</label>

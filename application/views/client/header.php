@@ -5,7 +5,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8" />
-    <title>BCORE Admin Dashboard Template | Dashboard </title>
+    <title>Wegentum Dashboard</title>
      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -51,10 +51,8 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="index.php" class="navbar-brand">
-                    <img src="assets/img/logo.png" alt="" />
-                        
-                        </a>
+                    <a href="#"><label>WEGENTUM LOGIN</label></a>
+					
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -279,10 +277,9 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="icon-user"></i> User Profile </a>
                             </li>
-                            <li><a href="#"><i class="icon-gear"></i> Settings </a>
-                            </li>
+                           
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="icon-signout"></i> Logout </a>
+                            <li><a href="<?php echo site_url();?>/auth/logout"><i class="icon-signout"></i> Logout </a>
                             </li>
                         </ul>
 

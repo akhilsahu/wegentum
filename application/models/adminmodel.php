@@ -22,6 +22,17 @@ class adminmodel extends CI_Model
 
     }
 	
+	
+		function getSearchBook($data) 
+		{
+			$select_query = "Select * from tab_documents where txt_title like '%$data%'";
+			$query = $this->db->query($select_query);
+			//print_r($query);exit;
+			$result=$query->result_array();
+			//print_r($result);exit;
+			return $result;
+		}
+	
 	function submit_emp($data)
 	
 	{
@@ -29,7 +40,7 @@ class adminmodel extends CI_Model
 		$ename=$data['name'];
 		$email=$data['email'];
 		$ephone=$data['phone'];
-		$epassword=$data['password'];
+		$epassword=md5($data['password']);
 		$edesignation=$data['designation'];
 		$eaddress=$data['address'];
 		$elpackage=$data['lcpackage'];
@@ -185,6 +196,51 @@ class adminmodel extends CI_Model
 	function delete_records($id)
 	{
 		$query="DELETE FROM tab_clients where int_client_id='$id'";
+		$result=$this->db->query($query);
+		return $result;
+	}
+	
+	function submit_doc($data)
+	{
+		
+		$title=$data['title'];
+		$descrip=$data['descrip'];
+		$filename=$data['filename'];
+		$id=$data['id'];
+		$sql="insert into tab_documents values(DEFAULT,'$title','$descrip','$filename','".date('Y-m-d H:i:s')."','$id')";
+		//print_r($sql);exit;
+		$result=$this->db->query($sql);
+		return $result;
+		
+		
+	}
+	function download_doc($id)
+	{
+		
+		 $sql="select * from tab_documents where int_user_id='$id'";
+		//print_r($sql);exit;
+		$query=$this->db->query($sql);
+		$result=$query->row_array();
+		//print_r($result);exit;
+		return $result;
+		
+		
+	}
+	
+	function get_all_documents($document_id)
+	{
+		//print_r($document_id);exit;
+		$sql="select * from tab_documents where int_user_id!='$document_id'";
+		//print_r($sql);exit;
+		$query=$this->db->query($sql);
+		$result=$query->result_array();
+		//print_r($result);exit;
+		return $result;
+	}
+	
+	function delete_doc($id)
+	{
+		$query="DELETE FROM tab_documents where int_user_id='$id'";
 		$result=$this->db->query($query);
 		return $result;
 	}

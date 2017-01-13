@@ -9,6 +9,7 @@ function auth()
 		//$this->load->library('session');
         //$this->load->database();
 		$this->load->model('adminmodel');
+		$this->load->model('clientmodel');
 		//$this->load->helper('url');
 		//$this->user=$this->session->userdata('user');
 		//print_r($user);exit;
@@ -25,19 +26,40 @@ function index()
 	function verify()
 	{
 		$data=$this->input->post();	
-		$response=$this->adminmodel->check($data);
-		if(count(response)==1)
-		{			
-			$this->session->set_userdata('user',$response);
-			//print_r($this->session->userdata('user'));die();
-			redirect('admin/dashboard',refresh);
+		//print_r($data);exit;
+		if($data['login']=="employee")
+		{
+			$response=$this->adminmodel->check($data);
+			if(count($response)>1)
+			{			
+				$this->session->set_userdata('user',$response);
+				if($response['int_user_group']==1)
+				{
+				redirect('admin/dashboard',refresh);
+				
+				}
+				else
+				{
+					redirect('employee/dashboard',refresh);
+				}
+			}
+			else
+			{
+				redirect('auth/index',refresh);
+			}
 		}
 		else
 		{
-			redirect('auth/index',refresh);
-			}
+			$response=$this->clientmodel->check($data);
+			//print_r($response);die();
+			if(count($response)>1)
+		{			
+			$this->session->set_userdata('user',$response);
+			redirect('client/dashboard',refresh);
+		}
 		
-	}
+		}
+}
 	
 	function logout()
 	{

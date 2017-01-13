@@ -20,12 +20,11 @@
                 <br />
             </div>
 		
-
             <ul id="menu" class="collapse">
 
                 
                 <li class="panel active">
-                    <a href="index.html" >
+                    <a href="<?php echo site_url();?>/admin/dashboard" >
                         <i class="icon-table"></i> Dashboard
 	   
                        
@@ -46,17 +45,9 @@
                        
                         <li class=""><a href="<?php echo site_url();?>/admin/addemp"><i class="icon-angle-right"></i> Add </a></li>
                          <li class=""><a href="<?php echo site_url();?>/admin/emp_list"><i class="icon-angle-right"></i>Manage </a></li>
-                        <!--<li class=""><a href="progress.html"><i class="icon-angle-right"></i> Progress </a></li>
-                       <li class=""><a href="tabs_panels.html"><i class="icon-angle-right"></i> Tabs & Panels </a></li>
-                        <li class=""><a href="notifications.html"><i class="icon-angle-right"></i> Notification </a></li>
-                         <li class=""><a href="more_notifications.html"><i class="icon-angle-right"></i> More Notification </a></li>
-                        <li class=""><a href="modals.html"><i class="icon-angle-right"></i> Modals </a></li>
-                          <li class=""><a href="wizard.html"><i class="icon-angle-right"></i> Wizard </a></li>
-                         <li class=""><a href="sliders.html"><i class="icon-angle-right"></i> Sliders </a></li>
-                        <li class=""><a href="typography.html"><i class="icon-angle-right"></i> Typography </a></li>-->
+                       
                     </ul>
                 </li>
-				
 				
 				
 				
@@ -75,7 +66,33 @@
                  
                     </ul>
                 </li>
+				
+				
+				<li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
+                        <i class="icon-table"></i> Documents
+	   
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                          &nbsp; 
+                    </a>
+                    <ul class="collapse" id="pagesr-nav">
+                        <li><a href="<?php echo site_url();?>/admin/add_doc"><i class="icon-angle-right"></i> Add </a></li>
+                        <li><a href="<?php echo site_url();?>/admin/doc_list"><i class="icon-angle-right"></i> Manage </a></li>
+                        
+                    </ul>
+                </li>
+				
+				
+				 
 
+            </ul>
+			
+			
+				</div>
+				
+				
                 <!--<li class="panel">
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
                         <i class="icon-table"></i> Pages
@@ -220,9 +237,7 @@
 
 
                
-                <li><a href="<?php echo site_url();?>"><i class="icon-signin"></i> Login Page </a></li>
+               
 
-            </ul>
-
-        </div>
+        
         <!--END MENU SECTION -->

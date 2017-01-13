@@ -34,6 +34,23 @@ function Admin()
 		
 	}
 	
+	function search()
+			{
+				$data=$this->input->post();
+				//print_r($data['search']);exit;
+				if($data[search]!='')
+				{
+				$data['users'] = $this->adminmodel->getSearchBook($data['search']);
+				//print_r($users);exit;
+				$data["page"]="document_grid1";
+				 $this->load->view('admin/page',$data);
+				}
+				else
+				 {
+					 echo 'Please enter some value in the Serach Box';
+				 }
+			}
+	
 	
 	function addemp()
 	{
@@ -159,6 +176,60 @@ function Admin()
 		$id=$this->input->get(id);
 		$data=$this->adminmodel->delete_records($id);
 		redirect('admin/cli_list','refresh');
+		//redirect('admin/cli_list','refresh');
+	}
+	
+	function add_doc()
+	{
+		
+				$data["page"]="add_document";
+				$data=$this->load->view('admin/page',$data);
+			
+	}
+	
+	function submit_doc()
+	{
+		$data=$this->input->post();
+		if($_FILES['file']['name']!='')
+		{
+			$image_name_string=$_FILES['file']['name'];
+			$image_name_array=explode(".",$image_name_string);
+			$ext=$image_name_array[count($image_name_array)-1];
+			$filename='upload/'.date("YmdHis").".".$ext;
+			move_uploaded_file($_FILES['file']['tmp_name'],$filename);
+			$data['filename']=$filename;
+		}
+		else
+		{
+			$data['filename']='';
+		}
+		
+		$pqr=$this->adminmodel->submit_doc($data);
+		echo "Data Inserted successfully";
+	}
+	public function download()
+	{
+		$id=$this->input->get(id);
+		$data['result'] = $this->adminmodel->download_doc($id);		
+		 $this->load->helper('download');
+		   force_download($data['result']['Uploaded_File'], NULL);
+	}
+	
+	function doc_list()
+	{
+		$data["page"]="document_grid1";
+		//$user=$this->user[''];
+		//print_r($this->user['int_user_id']);exit;
+		$data['users']=$this->adminmodel->get_all_documents($this->user['int_user_id']);
+		$data=$this->load->view('admin/page',$data);
+			
+	}
+	
+	function delete_doc()
+	{
+		$id=$this->input->get(id);
+		$data=$this->adminmodel->delete_doc($id);
+		redirect('admin/doc_list','refresh');
 		//redirect('admin/cli_list','refresh');
 	}
 }
