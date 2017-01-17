@@ -34,7 +34,42 @@ function Admin()
 		
 	}
 	
-	function search()
+	function profile()
+	{
+		$user=$this->session->userdata('user');
+		//print_r($user);exit;
+		if(isset($user['int_user_id']) && $user['int_user_id']!='')
+		{
+			$data["page"]="profile";
+			$this->load->view('admin/page',$data);	
+		}
+		else
+		{
+			$this->load->view('login');	
+		}	
+	}
+
+	function profile_update()
+	{
+		$data=$this->input->post();
+		//print_r($data);exit;		
+		$data['file_name']='';
+		if($_FILES['profile_image']['name']!='')
+		{
+			if (($_FILES["profile_image"]["type"] == "image/gif") || ($_FILES["profile_image"]["type"] == "image/jpeg")|| ($_FILES["profile_image"]["type"] == "image/jpg")|| ($_FILES["profile_image"]["type"] == "image/pjpeg")|| ($_FILES["profile_image"]["type"] == "image/x-png")|| ($_FILES["profile_image"]["type"] == "image/png")){
+				$ext=explode(".",$_FILES["profile_image"]["name"]);		
+				$file_name=date("YmdHis").".".$ext[count($ext)-1];
+				move_uploaded_file($_FILES['profile_image'][tmp_name],"upload/".$file_name);
+				$data['file_name']=$file_name;
+			}
+		}
+		$status=$this->adminmodel->update_profile($data);
+		$data["page"]="profile";
+		redirect('admin/dashboard', 'refresh');
+	}
+
+	
+		function search()
 			{
 				$data=$this->input->post();
 				//print_r($data['search']);exit;
@@ -111,34 +146,61 @@ function Admin()
 	{
 		$data=$this->input->post();
 		//print_r($_FILES);exit;
-		/*if($_FILES['image']['name']!='')
+		if($_FILES['img1']['name']!='')
 		{
-			$image_name_string=$_FILES['image']['name'];
+			$image_name_string=$_FILES['img1']['name'];
 			$image_name_array=explode(".",$image_name_string);
 			$ext=$image_name_array[count($image_name_array)-1];
 			$filename='upload/'.date("YmdHis").".".$ext;
-			move_uploaded_file($_FILES['image']['tmp_name'],$filename);
+			move_uploaded_file($_FILES['img1']['tmp_name'],$filename);
 			$data['filename']=$filename;
 		}
+		
+		elseif($_FILES['img2']['name']!='')
+		{
+			$image_name_string=$_FILES['img2']['name'];
+			$image_name_array=explode(".",$image_name_string);
+			$ext=$image_name_array[count($image_name_array)-1];
+			$filename='upload/'.date("YmdHis").".".$ext;
+			move_uploaded_file($_FILES['img2']['tmp_name'],$filename);
+			$data['filename']=$filename;
+		}
+		
+		elseif($_FILES['img3']['name']!='')
+		{
+			$image_name_string=$_FILES['img3']['name'];
+			$image_name_array=explode(".",$image_name_string);
+			$ext=$image_name_array[count($image_name_array)-1];
+			$filename='upload/'.date("YmdHis").".".$ext;
+			move_uploaded_file($_FILES['img3']['tmp_name'],$filename);
+			$data['filename']=$filename;
+		}
+		
+		elseif($_FILES['img4']['name']!='')
+		{
+			$image_name_string=$_FILES['img4']['name'];
+			$image_name_array=explode(".",$image_name_string);
+			$ext=$image_name_array[count($image_name_array)-1];
+			$filename='upload/'.date("YmdHis").".".$ext;
+			move_uploaded_file($_FILES['img4']['tmp_name'],$filename);
+			$data['filename']=$filename;
+		}
+		
+		elseif($_FILES['img5']['name']!='')
+		{
+			$image_name_string=$_FILES['img5']['name'];
+			$image_name_array=explode(".",$image_name_string);
+			$ext=$image_name_array[count($image_name_array)-1];
+			$filename='upload/'.date("YmdHis").".".$ext;
+			move_uploaded_file($_FILES['img5']['tmp_name'],$filename);
+			$data['filename']=$filename;
+		}
+		
 		else
 		{
 			$data['filename']='';
-		}*/
+		}
 		
-			If ($_FILES)
-			{
-			foreach ($_FILES ['image']['name'] as $Key => $Name) 
-			    {
-						move_uploaded_file(
-						$_FILES['image']['tmp_name'][$Key], 
-						$_FILES['image']['name'][$Key] 
-						) or die("Move from Temp area Failed");
-						$filename= $_FILES['image']['name'][$Key];
-						$data['filename']=$filename;
-						//print_r($filename);exit;
-						echo "<P>$filename: Uploaded";
-			    }
-			}
 			
 		$pqr=$this->adminmodel->submit_cli($data);
 		echo "Data Inserted successfully";
@@ -171,12 +233,11 @@ function Admin()
 		redirect('admin/cli_list','refresh');
 		
 	}
-	function delete_client()
+	function delete_client($id)
 	{
-		$id=$this->input->get(id);
+		//print_r($id);exit;
 		$data=$this->adminmodel->delete_records($id);
-		redirect('admin/cli_list','refresh');
-		//redirect('admin/cli_list','refresh');
+		echo "success";
 	}
 	
 	function add_doc()
@@ -187,7 +248,7 @@ function Admin()
 			
 	}
 	
-	function submit_doc()
+	function submit_doc()	
 	{
 		$data=$this->input->post();
 		if($_FILES['file']['name']!='')

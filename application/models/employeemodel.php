@@ -23,6 +23,35 @@ class employeemodel extends CI_Model
     }
 	
 	
+	function update_profile($data)
+	{
+		if($data['old_password']!=$data['password'])
+		{
+			$password=md5($data['password']);
+		}
+		else
+		{
+			$password=$data['old_password'];
+		}
+		$extra_query='';
+		if($data['file_name']!='')
+		{
+			$extra_query=",upload_img='".$data['file_name']."'";
+		}
+		$sql="update tab_users set txt_name='".$data['name']."',txt_password='$password',txt_designation='".$data['designation']."',txt_cell_no='".$data['cell_no']."'".$extra_query." where int_user_id=".$data['user_id']."";
+		$query=$this->db->query($sql);
+		//print_r($query);exit;
+		$sql_sel="select * from tab_users where int_user_id=".$data['user_id']."";
+		$query=$this->db->query($sql_sel);
+		//print_r($query);exit;
+		$result=$query->result_array();
+		//print_r($result);exit;
+		$this->session->set_userdata('user', $result[0]);
+		return $query?1:0;
+		
+	}
+	
+	
 		function getSearchBook($data,$abc) 
 		{
 			$select_query = "Select * from tab_documents where txt_title like '%$data%' and int_id='$abc'";

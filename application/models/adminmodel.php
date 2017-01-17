@@ -22,6 +22,34 @@ class adminmodel extends CI_Model
 
     }
 	
+	function update_profile($data)
+	{
+		if($data['old_password']!=$data['password'])
+		{
+			$password=md5($data['password']);
+		}
+		else
+		{
+			$password=$data['old_password'];
+		}
+		$extra_query='';
+		if($data['file_name']!='')
+		{
+			$extra_query=",upload_img='".$data['file_name']."'";
+		}
+		$sql="update tab_users set txt_name='".$data['name']."',txt_password='$password',txt_designation='".$data['designation']."',txt_cell_no='".$data['cell_no']."'".$extra_query." where int_user_id=".$data['user_id']."";
+		$query=$this->db->query($sql);
+		//print_r($query);exit;
+		$sql_sel="select * from tab_users where int_user_id=".$data['user_id']."";
+		$query=$this->db->query($sql_sel);
+		//print_r($query);exit;
+		$result=$query->result_array();
+		//print_r($result);exit;
+		$this->session->set_userdata('user', $result[0]);
+		return $query?1:0;
+		
+	}
+	
 	
 		function getSearchBook($data) 
 		{
@@ -29,12 +57,11 @@ class adminmodel extends CI_Model
 			$query = $this->db->query($select_query);
 			//print_r($query);exit;
 			$result=$query->result_array();
-			//print_r($result);exit;
+			//	print_r($result);exit;
 			return $result;
 		}
 	
 	function submit_emp($data)
-	
 	{
 		
 		$ename=$data['name'];
@@ -89,8 +116,6 @@ class adminmodel extends CI_Model
 		$sql="update tab_users set txt_name='$name',txt_email='$email',txt_cell_no='$phone_no',txt_designation='$designation',txt_address='$address',int_last_package='$lcpackage',txt_last_company='$lcname',txt_gender='$gender',dt_added='$date' where int_user_id='$user_id'";
 		//print_r($sql);exit;
 		$query=$this->db->query($sql);
-		//print_r($query);exit;
-		//$result=$query->result_array();
 		return $query;
 	}
 	
@@ -116,14 +141,14 @@ class adminmodel extends CI_Model
 		$landline=$data['landline'];
 		$phone_no=$data['phone_no'];
 		$email=$data['email'];
-		$filename=$data['filename'];
+		//$filename=$data['filename'];
 		//$filename1=$data['filename'];
-		//$photo=$data['photo'];
-		//$sig_photo=$data['sig_photo'];
-		//$pan_photo=$data['pan_photo'];
-		//$id_photo=$data['id_photo'];
-		//$id_back_photo=$data['id_back_photo'];
-		//$cheque_photo=$data['cheque_photo'];
+		$photo=$data['img1'];
+		$sig_photo=$data['img2'];
+		$pan_photo=$data['img3'];
+		$id_photo=$data['img4'];
+		$id_back_photo=$data['img5'];
+		$cheque_photo=$data['img6'];
 		$father_name=$data['father_name'];
 		$mother_name=$data['mother_name'];
 		$gender=$data['gender'];
@@ -146,7 +171,7 @@ class adminmodel extends CI_Model
 		$permanent_state=$data['permanent_state'];
 		$permanent_country=$data['permanent_country'];
 		
-		$sql="insert into tab_clients values(DEFAULT,'$fname','$mname','$lname','$current_address1','$current_address2','$city','$pincode','$state','$country','$dob','$landline','$phone_no','$email','$filename','$filename','$filename','$filename','$filename','$filename','$father_name','$mother_name','$gender','$status','$nationality','$pan_no','$annual_income','$nominee_name','$nominee_relation','$nominee_allocation','$bank_name','$bank_type','$bank_acc_no','$bank_ifsc_code','$bank_address','$permanent_address','$alternate_address','$permanent_city','$permanent_zip_code','$permanent_state','$permanent_country','','','')";
+		$sql="insert into tab_clients values(DEFAULT,'$fname','$mname','$lname','$current_address1','$current_address2','$city','$pincode','$state','$country','$dob','$landline','$phone_no','$email','$photo','$sig_photo','$pan_photo','$id_photo','$id_back_photo','$cheque_photo','$father_name','$mother_name','$gender','$status','$nationality','$pan_no','$annual_income','$nominee_name','$nominee_relation','$nominee_allocation','$bank_name','$bank_type','$bank_acc_no','$bank_ifsc_code','$bank_address','$permanent_address','$alternate_address','$permanent_city','$permanent_zip_code','$permanent_state','$permanent_country','','','')";
 		//print_r($sql);exit;
 		$result=$this->db->query($sql);
 	//	print_r($result);exit;

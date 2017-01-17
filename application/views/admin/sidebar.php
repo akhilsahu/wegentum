@@ -1,8 +1,17 @@
-<div id="left" >
+<div id="left">
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img src="<?php echo base_url(); ?>assets/img/no-image.png"  class="image-circle" alt=""/>
-                </a>
+               <?php if(isset($user['upload_img']) && $user['upload_img']!='')
+						{ ?>
+              <img src="<?php echo base_url()."upload/".$user['upload_img'];?>" style="width:230px;height:180px;"  alt="User Image">
+				<?php }
+				else
+				
+			{?>
+              <img src="<?php echo base_url();?>upload/no-image.png" class="img-circle" alt="User Image">
+            <?php 
+			}?>     
+						</a>
                 <br />
                 <div class="media-body">
                     <h5 class="media-heading">

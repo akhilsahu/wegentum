@@ -275,7 +275,7 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> User Profile </a>
+                            <li><a href="<?php echo site_url();?>/employee/profile"><i class="icon-user"></i> User Profile </a>
                             </li>
                            
                             <li class="divider"></li>

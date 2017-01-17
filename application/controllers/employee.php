@@ -6,6 +6,11 @@ public $user=array();
         parent::__construct();
 		$this->load->model('employeemodel');
 		$this->user=$this->session->userdata('user');
+		
+		if($this->user['int_user_id']=='' && $this->user['int_user_group']!=2 )
+		{
+			redirect('auth/index', 'refresh');	
+		}
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
 	function index()
@@ -23,6 +28,40 @@ public $user=array();
 		
 	}
 	
+	function profile()
+	{
+		$user=$this->session->userdata('user');
+		//print_r($user);exit;
+		if(isset($user['int_user_id']) && $user['int_user_id']!='')
+		{
+			$data["page"]="profile";
+			$this->load->view('employee/page',$data);	
+		}
+		else
+		{
+			$this->load->view('login');	
+		}	
+	}
+
+	function profile_update()
+	{
+		$data=$this->input->post();
+		//print_r($data);exit;		
+		$data['file_name']='';
+		if($_FILES['profile_image']['name']!='')
+		{
+			if (($_FILES["profile_image"]["type"] == "image/gif") || ($_FILES["profile_image"]["type"] == "image/jpeg")|| ($_FILES["profile_image"]["type"] == "image/jpg")|| ($_FILES["profile_image"]["type"] == "image/pjpeg")|| ($_FILES["profile_image"]["type"] == "image/x-png")|| ($_FILES["profile_image"]["type"] == "image/png")){
+				$ext=explode(".",$_FILES["profile_image"]["name"]);		
+				$file_name=date("YmdHis").".".$ext[count($ext)-1];
+				move_uploaded_file($_FILES['profile_image'][tmp_name],"upload/".$file_name);
+				$data['file_name']=$file_name;
+			}
+		}
+		$status=$this->employeemodel->update_profile($data);
+		$data["page"]="profile";
+		redirect('employee/dashboard', 'refresh');
+	}
+	
 	function search()
 			{
 				$data=$this->input->post();
@@ -30,8 +69,9 @@ public $user=array();
 				if($data[search]!='')
 				{
 					$abc=$this->user[int_user_id];
-				//print_r($data['search']);exit;
-			 $data['users'] = $this->employeemodel->getSearchBook($data['search'],$abc);
+				//print_r($data['search']);exit; 
+				
+			$data['users'] = $this->employeemodel->getSearchBook($data['search'],$abc);
 				//print_r($users);exit;
 				$data["page"]="document_grid";
 				 $this->load->view('employee/page',$data);
