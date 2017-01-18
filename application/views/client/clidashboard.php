@@ -600,13 +600,7 @@
         <div id="right">
 
             
-            <div class="well well-small">
-                <ul class="list-unstyled">
-                    <li>Visitor &nbsp; : <span>23,000</span></li>
-                    <li>Users &nbsp; : <span>53,000</span></li>
-                    <li>Registrations &nbsp; : <span>3,000</span></li>
-                </ul>
-            </div>
+            
             <div class="well well-small">
                 <button class="btn btn-block"> Help </button>
                 <button class="btn btn-primary btn-block"> Tickets</button>

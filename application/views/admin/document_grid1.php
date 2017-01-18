@@ -99,7 +99,7 @@ foreach($users as $user)
                         <div class="panel-heading">
 						
 						<form action="<?php echo site_url();?>/admin/search" method="post" enctype="multipart/form-data">	
-                         <input type="search" id="search" name="search" placeholder="What are you looking for?">		    	
+                         <input type="search" id="search" name="search" onclick="display_err" placeholder="What are you looking for?">		    	
 							<button>Search</button>
 							</form>	
                         </div>
@@ -133,23 +133,18 @@ foreach($users as $user)
 
 
         </div>
+		
        <!--END PAGE CONTENT -->
 
 
     </div>
 
-     <!--END MAIN WRAPPER -->
-
-   
-     <!-- GLOBAL SCRIPTS -->
-    <!--<script src="<?php echo base_url();?>assets/plugins/jquery-2.0.3.min.js"></script>
-     <script src="<?php echo base_url();?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url();?>assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <!-- END GLOBAL SCRIPTS -->
-        <!-- PAGE LEVEL SCRIPTS -->
-    <!--<script src="<?php echo base_url();?>assets/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url();?>assets/plugins/dataTables/dataTables.bootstrap.js"></script>     
-     <!-- END PAGE LEVEL SCRIPTS -->
-		<!--</body>
-     <!-- END BODY -->
-		<!--</html>-->
+ <!--<script>
+function display_err()
+{
+var r=confirm("Please enter some value in the Search Box");
+if(r==true) 
+{
+}	
+}
+</script>-->
