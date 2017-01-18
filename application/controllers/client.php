@@ -7,6 +7,7 @@ function client()
 		//$this->load->library('session');
         //$this->load->database();
 		$this->load->model('clientmodel');
+		$this->load->model('logmodel');
 		//$this->load->controller('auth');
 		//$this->load->helper('url');
 		$this->user=$this->session->userdata('user');
@@ -78,6 +79,8 @@ function client()
 		}
 		
 		$pqr=$this->clientmodel->submit_doc($data);
+		$action="Document Added";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
 		echo "Data Inserted successfully";
 		
 	}
@@ -104,6 +107,8 @@ function client()
 		$id=$this->input->get(id);
 		$data=$this->clientmodel->delete_doc($id);
 		redirect('client/doc_list','refresh');
+		$action="Document Deleted";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
 		//redirect('client/cli_list','refresh');
 	}
 }

@@ -5,6 +5,7 @@ public $user=array();
 	{
         parent::__construct();
 		$this->load->model('employeemodel');
+		$this->load->model('logmodel');
 		$this->user=$this->session->userdata('user');
 		
 		if($this->user['int_user_id']=='' && $this->user['int_user_group']!=2 )
@@ -126,6 +127,8 @@ public $user=array();
 			}
 			
 		$pqr=$this->employeemodel->submit_cli($data);
+		$action="Client Added";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		echo "Data Inserted successfully";
 			
 	}
@@ -154,6 +157,8 @@ public $user=array();
 	{
 		$data=$this->input->post();
 		$result=$this->employeemodel->update_client_ind($data);
+		$action="Client Updated";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('employee/cli_list','refresh');
 		
 	}
@@ -161,6 +166,8 @@ public $user=array();
 	{
 		$id=$this->input->get(id);
 		$data=$this->employeemodel->delete_records($id);
+		$action="Client Deleted";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('employee/cli_list','refresh');
 		//redirect('employee/cli_list','refresh');
 	}
@@ -191,6 +198,8 @@ public $user=array();
 		}
 		
 		$pqr=$this->employeemodel->submit_doc($data);
+		$action="Document Added";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		echo "Data Inserted successfully";
 	}
 	public function download()
@@ -216,6 +225,8 @@ public $user=array();
 		$id=$this->input->get(id);
 		$data=$this->employeemodel->delete_doc($id);
 		redirect('employee/doc_list','refresh');
+		$action="Document Deleted";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		//redirect('employee/cli_list','refresh');
 	}
 }

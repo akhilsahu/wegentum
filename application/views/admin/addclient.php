@@ -102,12 +102,12 @@
 										<div class="form-group">
                                             <label>ID Back Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img1">
+											name="img5">
                                         </div>
 										<div class="form-group">
                                             <label>Cheque Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img5">
+											name="img6">
                                         </div>
 									
 										<div class="form-group">

@@ -7,6 +7,7 @@ function Admin()
 		//$this->load->library('session');
         //$this->load->database();
 		$this->load->model('adminmodel');
+		$this->load->model('logmodel');
 		//$this->load->controller('auth');
 		//$this->load->helper('url');
 		$this->user=$this->session->userdata('user');
@@ -23,7 +24,7 @@ function Admin()
 	{
 		echo 'hi';
 	}
-	
+
 	
 	function dashboard()
 	{
@@ -80,8 +81,20 @@ function Admin()
 				}
 				/*else
 				 {
+					 //echo '<script>alert("Please enter some value in the Serach Box")</script>';
 					 echo 'Please enter some value in the Serach Box';
 				 }*/
+			}
+			
+			
+			
+			function log()
+			{
+				
+				
+				
+				
+				
 			}
 	
 	
@@ -99,8 +112,10 @@ function Admin()
 	{
 		$data=$this->input->post();
 		$pqr=$this->adminmodel->submit_emp($data);
-		echo "Data Inserted Successfully";
-		redirect('admin/addemp','refresh');
+		$action="Employee Added";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
+		//echo "Data Inserted Successfully";
+		redirect('admin/emp_list','refresh');
 	}
 	function emp_list()
 	{
@@ -122,6 +137,8 @@ function Admin()
 	{
 			$data=$this->input->post();
 			$data["users"]=$this->adminmodel->update_indv($data);
+			$action="Employee updated";
+			$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 			//echo "Data Updated Successfully";exit;
 			redirect('admin/emp_list','refresh');
 	}
@@ -130,6 +147,9 @@ function Admin()
 			$id=$this->input->get(id);
 			$data["users"]=$this->adminmodel->delete_emp_records($id);
 			//echo "Data Updated Successfully";exit;
+			$action="Employee Deleted";
+			$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
+			
 			redirect('admin/emp_list','refresh');
 	}
 	function addcli()
@@ -201,7 +221,10 @@ function Admin()
 		
 			
 		$pqr=$this->adminmodel->submit_cli($data);
+		$action="Client Added";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		echo "Data Inserted successfully";
+		
 			
 	}
 	
@@ -228,6 +251,8 @@ function Admin()
 	{
 		$data=$this->input->post();
 		$result=$this->adminmodel->update_client_ind($data);
+		$action="Client Updated";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('admin/cli_list','refresh');
 		
 	}
@@ -235,6 +260,8 @@ function Admin()
 	{
 		//print_r($id);exit;
 		$data=$this->adminmodel->delete_records($id);
+		$action="Client Deleted";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		echo "success";
 	}
 	
@@ -243,6 +270,7 @@ function Admin()
 		
 				$data["page"]="add_document";
 				$data=$this->load->view('admin/page',$data);
+				
 			
 	}
 	
@@ -265,6 +293,8 @@ function Admin()
 		}
 		
 		$pqr=$this->adminmodel->submit_doc($data);
+		$action="Document Added";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		echo "Data Inserted successfully";
 	}
 	public function download($id)
@@ -272,6 +302,8 @@ function Admin()
 		$data['result'] = $this->adminmodel->download_doc($id);		
 		 $this->load->helper('download');
 		   force_download($data['result']['Uploaded_File'], NULL);
+		   $action="Document Downloaded";
+		 $abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 	}
 	
 	function doc_list()
@@ -286,7 +318,10 @@ function Admin()
 	{
 	
 		$data=$this->adminmodel->delete_doc($id);
+		$action="Document Deleted";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('admin/doc_list','refresh');
+		
 		//redirect('admin/cli_list','refresh');
 	}
 }

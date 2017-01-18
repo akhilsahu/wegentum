@@ -76,10 +76,11 @@ class adminmodel extends CI_Model
 		$edate=$data['date'];
 		
 		
-		$sql="insert into tab_users values(DEFAULT,'$ename','$email','$ephone','$epassword','$edesignation','$eaddress','$elpackage','$elcname','$egender','2','$edate','','')";
+		$sql="insert into tab_users values(DEFAULT,'$ename','$email','$ephone','$epassword','$edesignation','$eaddress','$elpackage','$elcname','$egender','2','$edate','','','')";
 		//print_r($sql);exit;
 		$result=$this->db->query($sql);
 		return $result;
+		
 		
 		
 	}
