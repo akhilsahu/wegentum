@@ -5,6 +5,7 @@
 	$user=$this->session->userdata('user');
 ?>
 <?php
+
 include("header.php");
 
 include("sidebar.php");

@@ -22,12 +22,23 @@ public $user=array();
 	
 	function dashboard()
 	{
-		
+			$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 			$data["page"]="empdashboard";
 			//$data['user']=$user;
 			$this->load->view('employee/page',$data);
 		
 	}
+	
+	function log_grid()
+	{
+		
+				$data["page"]="emp_log_grid";
+				$data['users']=$this->logmodel->emp_log_details($this->user['int_user_id']);
+				//print_r($data);exit;
+				$data=$this->load->view('employee/page',$data);
+			
+	}
+		
 	
 	function profile()
 	{
@@ -202,9 +213,8 @@ public $user=array();
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		echo "Data Inserted successfully";
 	}
-	public function download()
+	public function download($id)
 	{
-		$id=$this->input->get(id);
 		$data['result'] = $this->employeemodel->download_doc($id);		
 		 $this->load->helper('download');
 		   force_download($data['result']['Uploaded_File'], NULL);
@@ -220,9 +230,8 @@ public $user=array();
 			
 	}
 	
-	function delete_doc()
+	function delete_doc($id)
 	{
-		$id=$this->input->get(id);
 		$data=$this->employeemodel->delete_doc($id);
 		redirect('employee/doc_list','refresh');
 		$action="Document Deleted";

@@ -60,14 +60,16 @@
                     <!-- MESSAGES SECTION -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-success">2</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
+                            <span class="label label-success">5</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
+						<?php foreach($log as $user)
+						{ ?>
                             <li>
                                 <a href="#">
                                     <div>
-                                       <strong>John Smith</strong>
+                                       <strong><?php echo $user['txt_msg'];?></strong>
                                         <span class="pull-right text-muted">
                                             <em>Today</em>
                                         </span>
@@ -79,39 +81,10 @@
                                     </div>
                                 </a>
                             </li>
-                            <li class="divider"></li>
+						<?php } ?>
+                            
                             <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>Raphel Jonson</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                         <br />
-                                        <span class="label label-success"> Moderate </span> 
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>Chi Ley Suk</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>26 Jan 2014</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                         <br />
-                                        <span class="label label-danger"> Low </span> 
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
+                                <a class="text-center" href="<?php echo site_url();?>/employee/log_grid">
                                     <strong>Read All Messages</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
@@ -288,6 +261,7 @@
                 </ul>
 
             </nav>
+</div>
 
-        </div>
+
         <!-- END HEADER SECTION -->

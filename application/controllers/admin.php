@@ -28,10 +28,12 @@ function Admin()
 	
 	function dashboard()
 	{
-		
-			$data["page"]="admdashboard";
+			$data['log']=$this->logmodel->top_five();
 			//$data['user']=$user;
+			$data["page"]="admdashboard";
+			//print_r($data);exit;
 			$this->load->view('admin/page',$data);
+			
 		
 	}
 	
@@ -68,9 +70,7 @@ function Admin()
 		$data["page"]="profile";
 		redirect('admin/dashboard', 'refresh');
 	}
-
-	
-		function search()
+	function search()
 			{
 				$data=$this->input->post();
 				if($data[search]!='')
@@ -79,30 +79,22 @@ function Admin()
 				$data["page"]="document_grid1";
 				 $this->load->view('admin/page',$data);
 				}
-				/*else
-				 {
-					 //echo '<script>alert("Please enter some value in the Serach Box")</script>';
-					 echo 'Please enter some value in the Serach Box';
-				 }*/
 			}
 			
 			
 			
-			function log()
-			{
-				
-				
-				
-				
-				
-			}
-	
-	
 	function addemp()
 	{
 		
 				$data["page"]="addemp";
-				//$data['user']=$user;
+				$data=$this->load->view('admin/page',$data);
+			
+	}
+	function log_grid()
+	{
+		
+				$data["page"]="log_grid";
+				$data['users']=$this->logmodel->log_details($pqr);
 				$data=$this->load->view('admin/page',$data);
 			
 	}
@@ -114,7 +106,7 @@ function Admin()
 		$pqr=$this->adminmodel->submit_emp($data);
 		$action="Employee Added";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
-		//echo "Data Inserted Successfully";
+		//print_r($abc);exit;
 		redirect('admin/emp_list','refresh');
 	}
 	function emp_list()
@@ -139,7 +131,6 @@ function Admin()
 			$data["users"]=$this->adminmodel->update_indv($data);
 			$action="Employee updated";
 			$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
-			//echo "Data Updated Successfully";exit;
 			redirect('admin/emp_list','refresh');
 	}
 	function delete_emp()
@@ -316,13 +307,10 @@ function Admin()
 	
 	function delete_doc($id)
 	{
-	
 		$data=$this->adminmodel->delete_doc($id);
 		$action="Document Deleted";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('admin/doc_list','refresh');
-		
-		//redirect('admin/cli_list','refresh');
 	}
 }
 ?>
