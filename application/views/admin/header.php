@@ -68,7 +68,7 @@
 
                         <ul class="dropdown-menu dropdown-messages">
 						<div>
-                        <span class="label label-primary">Action Perform</span>
+                        <span class="label label-primary">Recent Actions Performed</span>
                         </div>
 						<?php foreach($log as $user)
 							{?>
@@ -88,7 +88,7 @@
 							}	?>
                            <li>
                                 <a class="text-center" href="<?php echo site_url();?>/admin/log_grid">
-                                    <strong>Read All Message</strong>
+                                    <strong>See All Actions</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
                             </li>

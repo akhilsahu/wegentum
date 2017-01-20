@@ -1,6 +1,6 @@
 <!-- FOOTER -->
     <div id="footer">
-        <p>&copy;  binarytheme &nbsp;2014 &nbsp;</p>
+        <p>&copy;  Wegentum &nbsp;2017 &nbsp;</p>
     </div>
     <!--END FOOTER -->
 

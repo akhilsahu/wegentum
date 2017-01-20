@@ -23,6 +23,34 @@ class clientmodel extends CI_Model
 
     }
 	
+	function update_profile($data)
+	{
+		/*if($data['old_password']!=$data['password'])
+		{
+			$password=md5($data['password']);
+		}
+		else
+		{
+			$password=$data['old_password'];
+		}*/
+		$extra_query='';
+		if($data['file_name']!='')
+		{
+			$extra_query=",txt_photo='".$data['file_name']."'";
+		}
+		$sql="update tab_clients set txt_fname='".$data['fname']."',txt_mname='".$data['mname']."',txt_fname='".$data['fname']."',txt_cell_no='".$data['cell_no']."'".$extra_query." where int_client_id=".$data['user_id']."";
+		$query=$this->db->query($sql);
+		//print_r($query);exit;
+		$sql_sel="select * from tab_clients where int_client_id=".$data['user_id']."";
+		$query=$this->db->query($sql_sel);
+		//print_r($query);exit;
+		$result=$query->result_array();
+		//print_r($result);exit;
+		$this->session->set_userdata('user', $result[0]);
+		return $query?1:0;
+		
+	}
+	
 	
 		function getSearchBook($data,$abc) 
 		{

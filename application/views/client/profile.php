@@ -9,13 +9,41 @@ $user=$this->session->userdata('user');
                   <h3 class="box-title">Edit Profile</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form method="post" action="<?php echo site_url();?>/admin/profile_update" enctype="multipart/form-data">
+                <form method="post" action="<?php echo site_url();?>/client/profile_update" enctype="multipart/form-data">
                   <div class="box-body">
                     <div class="form-group">
-                      <label class="col-sm-4 control-label" for="inputEmail3">Name</label>
+                      <label class="col-sm-4 control-label" for="inputEmail3">First Name</label>
                       <div class="col-sm-8">
-                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['int_user_id']; ?>">
-                        <input type="text" placeholder="Username" value="<?php echo $user['txt_name']; ?>" id="name" name="name" class="form-control">
+                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['int_client_id']; ?>">
+                        <input type="text" placeholder="Username" value="<?php echo $user['txt_fname']; ?>" id="name" name="fname" class="form-control">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label" for="inputEmail3">Middle Name</label>
+                      <div class="col-sm-8">
+                       
+                        <input type="text" placeholder="Username" value="<?php echo $user['txt_mname']; ?>" id="name" name="mname" class="form-control">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label" for="inputEmail3">Last Name</label>
+                      <div class="col-sm-8">
+                        
+                        <input type="text" placeholder="Username" value="<?php echo $user['txt_lname']; ?>" id="name" name="lname" class="form-control">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label" for="inputEmail3">Current Address</label>
+                      <div class="col-sm-8">
+                        
+                        <input type="text" placeholder="Current Address" value="<?php echo $user['txt_address1']; ?>" id="name" name="add1" class="form-control">
+                      </div>
+                    </div>
+					<div class="form-group">
+                      <label class="col-sm-4 control-label" for="inputEmail3">Permanent Address</label>
+                      <div class="col-sm-8">
+                        
+                        <input type="text" placeholder="Permanent Address" value="<?php echo $user['txt_address2']; ?>" id="name" name="add2" class="form-control">
                       </div>
                     </div>
                     <div class="form-group">
@@ -25,25 +53,7 @@ $user=$this->session->userdata('user');
                       </div>
                     </div>
                   
-                    <div class="form-group">
-                      <label class="col-sm-4 control-label" for="inputPassword3">Password</label>
-                      <div class="col-sm-8">
-                        <input type="hidden" id="old_password" name="old_password" value="<?php echo $user['txt_password'] ?>">
-                        <input type="password" placeholder="Password" id="password" name="password" value="<?php echo $user['txt_password'] ?>" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4 control-label" for="inputPassword3">Confirm Password</label>
-                      <div class="col-sm-8">
-                        <input type="password" placeholder="Confirm Password" id="confirm_password" name="confirm_password" value="<?php echo $user['txt_password'] ?>" class="form-control">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-4 control-label" for="inputPassword3">Designation</label>
-                      <div class="col-sm-8">
-                          <input type="text" id="designation" name="designation" value="<?php echo $user['txt_designation'] ?>" class="form-control">                        
-                      </div>
-                    </div>
+                   
 					<div class="form-group">
                       <label class="col-sm-4 control-label" for="inputPassword3">Phone No.</label>
                       <div class="col-sm-8">
@@ -54,8 +64,8 @@ $user=$this->session->userdata('user');
                       <label class="col-sm-4 control-label" for="inputPassword3">Profile Image</label>
                       <div class="col-sm-8">
                         <input type="file" id="profile_image" name="profile_image" class="form-control">
-                       <?php if($user[upload_img]!=''){?>
-                        <img src="<?php echo base_url()."upload/".$user[upload_img]; ?>" alt="profile-image" class="img-circle" style="width:100px;height:100px;">  
+                       <?php if($user[txt_photo]!=''){?>
+                        <img src="<?php echo base_url()."upload/".$user[txt_photo]; ?>" alt="profile-image" class="img-circle" style="width:100px;height:100px;">  
                         <?php }?>
                       </div>
                     </div>
@@ -71,10 +81,10 @@ $user=$this->session->userdata('user');
 <script>
 $(document).ready(function(){
   $("#save_profile").click(function(){
-    if($("#username").val()=="")
+    if($("#mname").val()=="")
     {
-      alert("Please enter username");
-      $("#username").focus();
+      alert("Please enter middle name");
+      $("#mname").focus();
       return false;
     }
     if($("#fname").val()=="")
@@ -89,24 +99,7 @@ $(document).ready(function(){
       $("#lname").focus();
       return false;
     }
-    if($("#password").val()=="")
-    {
-      alert("Please enter password");
-      $("#password").focus();
-      return false;
-    }
-    if($("#confirm_password").val()=="")
-    {
-      alert("Please enter confirm password");
-      $("#confirm_password").focus();
-      return false;
-    }
-    if($("#confirm_password").val()!=$("#password").val())
-    {
-      alert("Password do not match");
-      $("#confirm_password").focus();
-      return false;
-    }
+    
     // if($("#email").val()!="" && !isEmail($("#email").val()))
     // {
     //     alert("Please enter proper email address");

@@ -9,13 +9,7 @@ foreach($users as $user)
 
                         <td>'.$user['txt_msg'].'</td>
 						<td>'.$user['dt_timestamp'].'</td>
-                        <td><a href="'.site_url().'/admin/edit_emp?id='.$user['int_user_id'].'">Edit</a>
-
-                            &nbsp;&nbsp;&nbsp;
-
-                            <a class="del_confirm" href="'.site_url().'/admin/delete_emp?id='.$user['int_user_id'].'">Delete</a>
-
-                        </td>
+                        
 						
                       </tr>';
 
@@ -78,7 +72,7 @@ foreach($users as $user)
                     <div class="col-lg-12">
 
 
-                        <h2> Employee Tables </h2>
+                        <h2> Employee Log Table </h2>
 
 
 
@@ -91,17 +85,15 @@ foreach($users as $user)
                 <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DataTables Of Employee Lists
-                        </div>
+                        
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>Message</th>
-                                            <th>Date</th>
-											 <th>Actions</th>
+                                            <th>Date and Time</th>
+											 
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -71,7 +71,7 @@ foreach($users as $user)
                     <div class="col-lg-12">
 
 
-                        <h2> Employee Tables </h2>
+                        <h2> LOG Table </h2>
 
 
 
@@ -84,16 +84,14 @@ foreach($users as $user)
                 <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DataTables Of Employee Lists
-                        </div>
+                        
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>Message</th>
-                                            <th>Date</th>
+                                            <th>Date and Time</th>
 											
                                         </tr>
                                     </thead>

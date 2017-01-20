@@ -22,9 +22,43 @@ function client()
 	{
 		
 				$data["page"]="cli_log_grid";
-				$data['users']=$this->logmodel->cli_log_details($pqr);
+				$data['users']=$this->logmodel->cli_log_details($this->user['int_client_id']);
 				$data=$this->load->view('client/page',$data);
 			
+	}
+	
+	function profile()
+	{
+		$user=$this->session->userdata('user');
+		//print_r($user);exit;
+		if(isset($user['int_client_id']) && $user['int_client_id']!='')
+		{
+			$data["page"]="profile";
+			$this->load->view('client/page',$data);	
+		}
+		else
+		{
+			$this->load->view('client/clidashboard');	
+		}	
+	}
+
+	function profile_update()
+	{
+		$data=$this->input->post();
+		//print_r($data);exit;		
+		$data['file_name']='';
+		if($_FILES['profile_image']['name']!='')
+		{
+			if (($_FILES["profile_image"]["type"] == "image/gif") || ($_FILES["profile_image"]["type"] == "image/jpeg")|| ($_FILES["profile_image"]["type"] == "image/jpg")|| ($_FILES["profile_image"]["type"] == "image/pjpeg")|| ($_FILES["profile_image"]["type"] == "image/x-png")|| ($_FILES["profile_image"]["type"] == "image/png")){
+				$ext=explode(".",$_FILES["profile_image"]["name"]);		
+				$file_name=date("YmdHis").".".$ext[count($ext)-1];
+				move_uploaded_file($_FILES['profile_image'][tmp_name],"upload/".$file_name);
+				$data['file_name']=$file_name;
+			}
+		}
+		$status=$this->clientmodel->update_profile($data);
+		$data["page"]="profile";
+		redirect('client/dashboard', 'refresh');
 	}
 	
 	function search()
@@ -80,9 +114,9 @@ function client()
 		echo "Data Inserted successfully";
 		
 	}
-	public function download()
+	public function download($id)
 	{
-		$id=$this->input->get(id);
+		
 		$data['result'] = $this->clientmodel->download_doc($id);		
 		$this->load->helper('download');
 		force_download($data['result']['Uploaded_File'], NULL);
@@ -98,9 +132,9 @@ function client()
 			
 	}
 	
-	function delete_doc()
+	function delete_doc($id)
 	{
-		$id=$this->input->get(id);
+		
 		$data=$this->clientmodel->delete_doc($id);
 		redirect('client/doc_list','refresh');
 		$action="Document Deleted";

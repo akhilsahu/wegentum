@@ -74,6 +74,7 @@ public $user=array();
 		redirect('employee/dashboard', 'refresh');
 	}
 	
+	
 	function search()
 			{
 				$data=$this->input->post();
