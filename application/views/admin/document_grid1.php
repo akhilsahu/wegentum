@@ -176,7 +176,6 @@ ul.rig.columns-4 li {
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" placeholder="what are you looking for ?"/>
 		<input type="submit" name="submit" id="btn_search" value="Search">
 		</form>
-<div class="wrapper">
 
 	<div class="container">
 		

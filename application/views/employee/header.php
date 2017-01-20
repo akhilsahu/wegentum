@@ -78,7 +78,9 @@
                                     </div>
                                 </a>
                             </li>
-						<?php } ?>
+							<?php
+							}	?>
+                           
                             
                             <li>
                                 <a class="text-center" href="<?php echo site_url();?>/employee/log_grid">
