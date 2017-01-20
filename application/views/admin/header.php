@@ -70,16 +70,16 @@
 						<div>
                         <span class="label label-primary">Recent Actions Performed</span>
                         </div>
-						<?php foreach($log as $user)
+						<?php foreach($log as $val)
 							{?>
                             <li>
 							
                                 <a href="#">
                                     <div>
-                                       <strong><?php echo $user['txt_msg'];?></strong>
+                                       <strong><?php echo $val['txt_msg'];?></strong>
 									   <br/>
                                         <span class="pull-right text-muted">
-                                            <em><?php echo $user['dt_timestamp'];?></em>
+                                            <em><?php echo $val['dt_timestamp'];?></em>
                                         </span>
                                     </div>
                                 </a>
