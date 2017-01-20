@@ -1,5 +1,6 @@
 <?php
 $user=$this->session->userdata('user');
+//print_r($user);exit;
 ?>
 <div class="content-wrapper">
 <div class="row">
@@ -14,8 +15,8 @@ $user=$this->session->userdata('user');
                     <div class="form-group">
                       <label class="col-sm-4 control-label" for="inputEmail3">Name</label>
                       <div class="col-sm-8">
-                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['int_user_id']; ?>">
-                        <input type="text" placeholder="Username" value="<?php echo $user['txt_name']; ?>" id="name" name="name" class="form-control">
+                        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['int_client_id']; ?>">
+                        <input type="text" placeholder="Username" value="<?php echo $user['txt_fname']." "['txt_mname']." ".['txt_lname']; ?>" id="name" name="name" class="form-control">
                       </div>
                     </div>
                     <div class="form-group">

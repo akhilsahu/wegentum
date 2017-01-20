@@ -1,5 +1,4 @@
-
- <div id="content">
+<div id="content">
            
                 <div class="inner">
                     <div class="row">
@@ -40,7 +39,7 @@
 										
 										
 										
-                                        <button type="submit" class="btn btn-default">Upload Document</button>
+                                        <button type="submit"  id="upload_doc" class="btn btn-default">Upload Document</button>
                                         
 										</div>
                                     </form>

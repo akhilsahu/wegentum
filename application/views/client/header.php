@@ -248,7 +248,7 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> User Profile </a>
+                            <li><a href="<?php echo site_url();?>/client/profile"><i class="icon-user"></i> User Profile </a>
                             </li>
                            
                             <li class="divider"></li>

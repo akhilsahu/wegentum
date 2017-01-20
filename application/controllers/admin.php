@@ -18,6 +18,10 @@ function Admin()
 	function dashboard()
 	{
 			$data['log']=$this->logmodel->top_five();
+			//print_r($data);exit;
+			$data['records_emp']=$this->adminmodel->no_emp_records($this->user['int_user_id']);
+			$data['records_cli']=$this->adminmodel->no_cli_records($this->user['int_user_id']);
+			//print_r($data);exit;
 			$data["page"]="admdashboard";
 			$this->load->view('admin/page',$data);
 			
@@ -288,9 +292,7 @@ function Admin()
 	{
 		
 				$data["page"]="add_document";
-				$data=$this->load->view('admin/page',$data);
-				
-			
+				$data=$this->load->view('admin/page',$data);	
 	}
 	
 	function submit_doc()	
@@ -314,10 +316,11 @@ function Admin()
 		$pqr=$this->adminmodel->submit_doc($data);
 		$action="Document Added";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
-		echo "Data Inserted successfully";
+		redirect('admin/doc_list','refresh');
 	}
 	public function download($id)
 	{
+		
 		$data['result'] = $this->adminmodel->download_doc($id);		
 		 $this->load->helper('download');
 		   force_download($data['result']['Uploaded_File'], NULL);

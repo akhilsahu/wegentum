@@ -18,33 +18,58 @@ function client()
 			$this->load->view('client/page',$data);
 		
 	}
+	
 	function log_grid()
 	{
 		
 				$data["page"]="cli_log_grid";
-				$data['users']=$this->logmodel->cli_log_details($pqr);
+				$data['users']=$this->logmodel->cli_log_details($this->user['int_client_id']);
 				$data=$this->load->view('client/page',$data);
 			
 	}
 	
+	function profile()
+	{
+		$user=$this->session->userdata('user');
+		//print_r($user);exit;
+		if(isset($user['int_client_id']) && $user['int_client_id']!='')
+		{
+			$data["page"]="profile";
+			$this->load->view('client/page',$data);	
+		}
+		else
+		{
+			$this->load->view('login');	
+		}	
+	}
+
+	function profile_update()
+	{
+		$data=$this->input->post();	
+		$data['file_name']='';
+		if($_FILES['profile_image']['name']!='')
+		{
+			if (($_FILES["profile_image"]["type"] == "image/gif") || ($_FILES["profile_image"]["type"] == "image/jpeg")|| ($_FILES["profile_image"]["type"] == "image/jpg")|| ($_FILES["profile_image"]["type"] == "image/pjpeg")|| ($_FILES["profile_image"]["type"] == "image/x-png")|| ($_FILES["profile_image"]["type"] == "image/png")){
+				$ext=explode(".",$_FILES["profile_image"]["name"]);		
+				$file_name=date("YmdHis").".".$ext[count($ext)-1];
+				move_uploaded_file($_FILES['profile_image'][tmp_name],"upload/".$file_name);
+				$data['file_name']=$file_name;
+			}
+		}
+		$status=$this->adminmodel->update_profile($data);
+		$data["page"]="profile";
+		redirect('client/dashboard', 'refresh');
+	}
 	function search()
 			{
 				$data=$this->input->post();
-				//print_r($data);exit;
 				if($data[search]!='')
 				{
-					$abc=$this->user[int_client_id];
+				$abc=$this->user['int_client_id'];
 				$data['users'] = $this->clientmodel->getSearchBook($data['search'],$abc);
-				
-				//print_r($abc);exit;
 				$data["page"]="document_grid";
 				$this->load->view('client/page',$data);
 				}
-				
-				 else
-				 {
-					 echo 'Please enter some value in the Serach Box';
-				 }
 			}
 	
 	
@@ -77,35 +102,32 @@ function client()
 		$pqr=$this->clientmodel->submit_doc($data);
 		$action="Document Added";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
-		echo "Data Inserted successfully";
+		redirect('client/doc_list','refresh');
 		
 	}
-	public function download()
+	public function download($id)
 	{
-		$id=$this->input->get(id);
 		$data['result'] = $this->clientmodel->download_doc($id);		
 		$this->load->helper('download');
 		force_download($data['result']['Uploaded_File'], NULL);
+		$action="Document Downloaded";
+		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],3);
 	}
 	
 	function doc_list()
 	{
 		$data["page"]="document_grid";
-		//$user=$this->user[''];
-		//print_r($this->user['int_user_id']);exit;
 		$data['users']=$this->clientmodel->get_all_documents($this->user['int_client_id']);
 		$data=$this->load->view('client/page',$data);
 			
 	}
 	
-	function delete_doc()
+	function delete_doc($id)
 	{
-		$id=$this->input->get(id);
 		$data=$this->clientmodel->delete_doc($id);
 		redirect('client/doc_list','refresh');
 		$action="Document Deleted";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
-		//redirect('client/cli_list','refresh');
 	}
 }
 ?>

@@ -22,6 +22,25 @@ class adminmodel extends CI_Model
 
     }
 	
+	function no_emp_records()
+	{
+		$sql="select int_user_id from tab_users";
+		//print_r($sql);exit;
+		$result=$this->db->query($sql);
+		$response=count($result->result_array());
+		//print_r($response);exit;
+		return $response;
+	}
+	function no_cli_records()
+	{
+		$sql="select int_client_id from tab_clients";
+		//print_r($sql);exit;
+		$result=$this->db->query($sql);
+		$response=count($result->result_array());
+		//print_r($response);exit;
+		return $response;
+	}
+	
 	function update_profile($data)
 	{
 		if($data['old_password']!=$data['password'])

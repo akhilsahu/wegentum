@@ -64,20 +64,17 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
-						<?php foreach($log as $user)
+						<?php foreach($log as $val)
 						{ ?>
                             <li>
+							
                                 <a href="#">
                                     <div>
-                                       <strong><?php echo $user['txt_msg'];?></strong>
+                                       <strong><?php echo $val['txt_msg'];?></strong>
+									   <br/>
                                         <span class="pull-right text-muted">
-                                            <em>Today</em>
+                                            <em><?php echo $val['dt_timestamp'];?></em>
                                         </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                        <br />
-                                        <span class="label label-primary">Important</span> 
-
                                     </div>
                                 </a>
                             </li>
