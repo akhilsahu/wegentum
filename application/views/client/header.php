@@ -57,62 +57,35 @@
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
 
-                    <!-- MESSAGES SECTION -->
+                   <!-- MESSAGES SECTION -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-success">2</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
+                            <span class="label label-success">5</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
+						<div>
+                        <span class="label label-primary">Action Perform</span>
+                        </div>
+						<?php foreach($log as $user)
+							{?>
                             <li>
+							
                                 <a href="#">
                                     <div>
-                                       <strong>John Smith</strong>
+                                       <strong><?php echo $user['txt_msg'];?></strong>
+									   <br/>
                                         <span class="pull-right text-muted">
-                                            <em>Today</em>
+                                            <em><?php echo $user['dt_timestamp'];?></em>
                                         </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                        <br />
-                                        <span class="label label-primary">Important</span> 
-
                                     </div>
                                 </a>
                             </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>Raphel Jonson</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                         <br />
-                                        <span class="label label-success"> Moderate </span> 
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>Chi Ley Suk</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>26 Jan 2014</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                         <br />
-                                        <span class="label label-danger"> Low </span> 
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <strong>Read All Messages</strong>
+							<?php
+							}	?>
+                           <li>
+                                <a class="text-center" href="<?php echo site_url();?>/client/log_grid">
+                                    <strong>Read All Message</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
                             </li>

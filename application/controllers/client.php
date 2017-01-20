@@ -4,31 +4,27 @@ public $user=array();
 function client() 
 	{
         parent::__construct();
-		//$this->load->library('session');
-        //$this->load->database();
 		$this->load->model('clientmodel');
 		$this->load->model('logmodel');
-		//$this->load->controller('auth');
-		//$this->load->helper('url');
 		$this->user=$this->session->userdata('user');
-		//$username=$this->user['txt_name'];
-		//print_r($username);exit;
-		
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
-	function index()
-	{
-		echo 'hi';
-	}
-	
 	
 	function dashboard()
 	{
-		
+			$data['log']=$this->logmodel->cli_top_five($this->user['int_client_id']);
 			$data["page"]="clidashboard";
 			//$data['user']=$user;
 			$this->load->view('client/page',$data);
 		
+	}
+	function log_grid()
+	{
+		
+				$data["page"]="cli_log_grid";
+				$data['users']=$this->logmodel->cli_log_details($pqr);
+				$data=$this->load->view('client/page',$data);
+			
 	}
 	
 	function search()

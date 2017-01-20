@@ -67,20 +67,20 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
+						<div>
+                        <span class="label label-primary">Action Perform</span>
+                        </div>
 						<?php foreach($log as $user)
 							{?>
                             <li>
+							
                                 <a href="#">
                                     <div>
                                        <strong><?php echo $user['txt_msg'];?></strong>
+									   <br/>
                                         <span class="pull-right text-muted">
-                                            <em>Today</em>
+                                            <em><?php echo $user['dt_timestamp'];?></em>
                                         </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                        <br />
-                                        <span class="label label-primary">Important</span>
-
                                     </div>
                                 </a>
                             </li>

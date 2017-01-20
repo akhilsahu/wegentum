@@ -15,9 +15,9 @@ class Logmodel extends CI_Model
 		$result=$this->db->query($sql);
 		return $result;
 	}
-	function top_five($userid)
+	function top_five($logid)
 	{
-		$sql="SELECT txt_msg FROM tab_log
+		$sql="SELECT txt_msg,dt_timestamp FROM tab_log
 		ORDER BY int_log_id DESC
 		LIMIT 5";
 		//print_r($sql);exit;
@@ -27,6 +27,17 @@ class Logmodel extends CI_Model
 		return $response;
 	}
 	function emp_top_five($logid)
+	{
+		$sql="SELECT txt_msg FROM tab_log where int_user_id='$logid'
+		ORDER BY int_log_id DESC
+		LIMIT 5 ";
+		//print_r($sql);exit;
+		$query=$this->db->query($sql);
+		$response=$query->result_array();
+		//print_r($response);exit;
+		return $response;
+	}
+	function cli_top_five($logid)
 	{
 		$sql="SELECT txt_msg FROM tab_log where int_user_id='$logid'
 		ORDER BY int_log_id DESC
@@ -47,6 +58,15 @@ class Logmodel extends CI_Model
 		return $response;
 	}
 	function emp_log_details($logid)
+	{
+		$sql="select * from tab_log where int_user_id='$logid'";
+		//print_r($sql);exit;
+		$query=$this->db->query($sql);
+		$response=$query->result_array();
+		//print_r($response);exit;
+		return $response;
+	}
+	function cli_log_details($logid)
 	{
 		$sql="select * from tab_log where int_user_id='$logid'";
 		//print_r($sql);exit;

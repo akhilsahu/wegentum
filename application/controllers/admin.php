@@ -4,15 +4,9 @@ public $user=array();
 function Admin() 
 	{
         parent::__construct();
-		//$this->load->library('session');
-        //$this->load->database();
 		$this->load->model('adminmodel');
 		$this->load->model('logmodel');
-		//$this->load->controller('auth');
-		//$this->load->helper('url');
 		$this->user=$this->session->userdata('user');
-		//$username=$this->user['txt_name'];
-		//print_r($username);exit;
 		if($this->user['int_user_id']=='' && $this->user['int_user_group']!=1 )
 		{
 			redirect('auth/index', 'refresh');	
@@ -20,18 +14,11 @@ function Admin()
 		
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
-	function index()
-	{
-		echo 'hi';
-	}
-
 	
 	function dashboard()
 	{
 			$data['log']=$this->logmodel->top_five();
-			//$data['user']=$user;
 			$data["page"]="admdashboard";
-			//print_r($data);exit;
 			$this->load->view('admin/page',$data);
 			
 		
@@ -54,8 +41,7 @@ function Admin()
 
 	function profile_update()
 	{
-		$data=$this->input->post();
-		//print_r($data);exit;		
+		$data=$this->input->post();	
 		$data['file_name']='';
 		if($_FILES['profile_image']['name']!='')
 		{
@@ -70,9 +56,51 @@ function Admin()
 		$data["page"]="profile";
 		redirect('admin/dashboard', 'refresh');
 	}
+	
+	function settings(){
+		$this->load->library('form_validation');		
+		$this->form_validation->set_rules('site_name', 'Site Name', 'required');
+		$this->form_validation->set_rules('site_email', 'Email', 'required');					
+		if($this->form_validation->run())
+		{	
+			$data=array('txt_meta_value'=>$this->input->post('site_name'));
+			$this->db->where('txt_meta_key','site_name');
+			$this->db->update('tab_settings',$data);
+
+			$data=array('txt_meta_value'=>$this->input->post('site_email'));
+			$this->db->where('txt_meta_key','site_email');
+			$this->db->update('tab_settings',$data);
+
+			if($_FILES['image1']['tmp_name']!=''){
+				$ext=explode(".",$_FILES["image1"]["name"]);		
+				$file_name="logo.".$ext[count($ext)-1];
+
+				$data=array('txt_meta_value'=>$file_name);
+				$this->db->where('txt_meta_key','site_logo');
+				$this->db->update('tab_settings',$data);
+				
+				move_uploaded_file($_FILES['image1']['tmp_name'],"upload/".$file_name);
+			}
+			
+			$data=array('txt_meta_value'=>$this->input->post('contact_no'));
+			$this->db->where('txt_meta_key','company_no');
+			$this->db->update('tab_settings',$data);
+			
+			redirect('admin/settings', 'refresh');
+		}
+		else
+		{
+			$query = $this->db->get('tab_settings');
+			$data['settings'] = $query->result_array();
+			$data["page"]="settings";
+			//print_r($data['settings']);exit;
+			$this->load->view('admin/page',$data);
+		}
+	}
 	function search()
 			{
 				$data=$this->input->post();
+				//print_r($data);exit;
 				if($data[search]!='')
 				{
 				$data['users'] = $this->adminmodel->getSearchBook($data['search']);

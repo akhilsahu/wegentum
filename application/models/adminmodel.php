@@ -49,6 +49,15 @@ class adminmodel extends CI_Model
 		return $query?1:0;
 		
 	}
+	function settings()
+	{
+		$select_query = "Select * from tab_settings";
+			$query = $this->db->query($select_query);
+			//print_r($query);exit;
+			$result=$query->result_array();
+			//	print_r($result);exit;
+			return $result;
+	}
 	
 	
 		function getSearchBook($data) 
