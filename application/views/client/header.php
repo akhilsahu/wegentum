@@ -51,7 +51,7 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="#"><label>WEGENTUM LOGIN</label></a>
+                    <a href="#"><img src="<?php echo base_url().'assets/img/logo.png';?>" style="width:150px;height:50px;"></a>
 					
                 </header>
                 <!-- END LOGO SECTION -->
