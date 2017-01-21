@@ -3,7 +3,8 @@
 	header('Pragma: no-cache'); // HTTP 1.0.
 	header('Expires: 0'); // Proxies
 	$user=$this->session->userdata('user');
-?>
+//print_r($user);exit;
+	?>
 <?php
 
 include("header.php");

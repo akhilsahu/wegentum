@@ -27,9 +27,9 @@
                 </p>
                 <input type="text" placeholder="Username" class="form-control" name="email" />
                 <input type="password" placeholder="Password" class="form-control" name="password" />
-                <button class="btn text-muted text-center btn-danger" type="submit">Login As</button>
-				<input type="radio" id="login_emp" name="login" value="employee"/><label for="login_emp">Employee</label>
-				<input type="radio" id="login_cli" name="login" value="client"/><label for="login_cli">Client</label>
+				<center><input type="radio" id="login_emp" name="login" value="employee"/><label for="login_emp">Employee</label>
+				<input type="radio" id="login_cli" name="login" value="client"/><label for="login_cli">Client</label></center><br/>
+				<center><button class="btn text-muted text-center btn-danger" type="submit">Login As</button></center>
             </form>
         </div>
         <div id="forgot" class="tab-pane">

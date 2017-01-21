@@ -1,16 +1,4 @@
-<?php
-$con=mysqli_connect('localhost','root','','dab_wegentum');
-$sql="select int_user_id from tab_users";
-$sql1="select int_client_id from tab_clients";
-$result=mysqli_query($con,$sql);
-$result1=mysqli_query($con,$sql1);
-$rows=mysqli_num_rows($result);
-$rows1=mysqli_num_rows($result1);
-?>   
-
-
-
-   <!--PAGE CONTENT -->
+<!--PAGE CONTENT -->
         <div id="content">
              
             <div class="inner" style="min-height: 700px;">
@@ -488,8 +476,11 @@ $rows1=mysqli_num_rows($result1);
             
             <div class="well well-small">
                 <ul class="list-unstyled">
-                    <li>No.of Employees &nbsp; : <span><?php echo $rows;?></span></li>
-                    <li>No. of Clients &nbsp; : <span><?php echo $rows1;?></span></li>
+                    <li>No.of Employees &nbsp; : <span><?php echo $records_emp ;?></span>
+					</li>
+					<li>No.of Clients &nbsp; : <span><?php echo $records_cli ;?></span>
+					</li>
+                    
                     
                 </ul>
             </div>

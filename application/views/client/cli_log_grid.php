@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 $complete_structure='';
 
@@ -7,33 +7,13 @@ foreach($users as $user)
 	
   $complete_structure.='<tr role="row" class="odd">
 
-                        <td>'.$user['txt_name'].'</td>
-						<td>'.$user['txt_email'].'</td>
-  						<td>'.$user['txt_cell_no'].'</td>
-						<td>'.$user['txt_designation'].'</td>
-						<td>'.$user['txt_address'].'</td>
-						<td>'.$user['int_last_package'].'</td>
-						 <td>'.$user['txt_last_company'].'</td>
-						<td>'.$user['txt_gender'].'</td>
-						<td>'.$user['dt_added'].'</td>
-						
-
-                        <td><a href="'.site_url().'/admin/edit_emp?id='.$user['int_user_id'].'">Edit</a>
-
-                            &nbsp;&nbsp;&nbsp;
-
-                            <a class="del_confirm" href="'.site_url().'/admin/delete_emp?id='.$user['int_user_id'].'">Delete</a>
-
-                        </td>
-						
+                        <td>'.$user['txt_msg'].'</td>
+						<td>'.$user['dt_timestamp'].'</td>
+                       
                       </tr>';
 
 }
-
-
 ?>
-
-
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
@@ -87,7 +67,7 @@ foreach($users as $user)
                     <div class="col-lg-12">
 
 
-                        <h2> Employee Table </h2>
+                        <h2> LOG Table </h2>
 
 
 
@@ -100,22 +80,15 @@ foreach($users as $user)
                 <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                       
+                        
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone No.</th>
-                                            <th>Designation</th>
-                                            <th>Address</th>
-											<th>Last Company Package</th>
-                                            <th>Last Company Name</th>
-                                            <th>Gender</th>
-											 <th>Date</th>
-											 <th>Actions</th>
+                                            <th>Message</th>
+                                            <th>Date and Time</th>
+											
                                         </tr>
                                     </thead>
                                     <tbody>

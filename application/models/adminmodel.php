@@ -22,6 +22,25 @@ class adminmodel extends CI_Model
 
     }
 	
+	function no_emp_records()
+	{
+		$sql="select int_user_id from tab_users";
+		//print_r($sql);exit;
+		$result=$this->db->query($sql);
+		$response=count($result->result_array());
+		//print_r($response);exit;
+		return $response;
+	}
+	function no_cli_records()
+	{
+		$sql="select int_client_id from tab_clients";
+		//print_r($sql);exit;
+		$result=$this->db->query($sql);
+		$response=count($result->result_array());
+		//print_r($response);exit;
+		return $response;
+	}
+	
 	function update_profile($data)
 	{
 		if($data['old_password']!=$data['password'])
@@ -48,6 +67,15 @@ class adminmodel extends CI_Model
 		$this->session->set_userdata('user', $result[0]);
 		return $query?1:0;
 		
+	}
+	function settings()
+	{
+		$select_query = "Select * from tab_settings";
+			$query = $this->db->query($select_query);
+			//print_r($query);exit;
+			$result=$query->result_array();
+			//	print_r($result);exit;
+			return $result;
 	}
 	
 	

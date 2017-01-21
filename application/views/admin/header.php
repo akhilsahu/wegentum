@@ -63,24 +63,24 @@
                    <!-- MESSAGES SECTION -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-success">5</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
+                            <span class="label label-success"><?php echo $log['pqr'];?></span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
-						<?php foreach($log as $user)
+						<div>
+                        <span class="label label-primary">Recent Actions Performed</span>
+                        </div>
+						<?php foreach($log['abc'] as $val)
 							{?>
                             <li>
+							
                                 <a href="#">
                                     <div>
-                                       <strong><?php echo $user['txt_msg'];?></strong>
+                                       <strong><?php echo $val['txt_msg'];?></strong>
+									   <br/>
                                         <span class="pull-right text-muted">
-                                            <em>Today</em>
+                                            <em><?php echo $val['dt_timestamp'];?></em>
                                         </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                        <br />
-                                        <span class="label label-primary">Important</span>
-
                                     </div>
                                 </a>
                             </li>
@@ -88,7 +88,7 @@
 							}	?>
                            <li>
                                 <a class="text-center" href="<?php echo site_url();?>/admin/log_grid">
-                                    <strong>Read All Message</strong>
+                                    <strong>See All Actions</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
                             </li>

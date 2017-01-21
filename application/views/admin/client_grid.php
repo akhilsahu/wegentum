@@ -111,7 +111,7 @@ if(r==true) {
                     <div class="col-lg-12">
 
 
-                        <h2> Client Tables </h2>
+                        <h2> Client Table </h2>
 
 
 
@@ -124,9 +124,7 @@ if(r==true) {
                 <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DataTables Of Clients Lists
-                        </div>
+                        
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">

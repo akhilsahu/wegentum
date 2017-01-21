@@ -1,12 +1,21 @@
 <div id="left" >
             <div class="media user-media well-small">
                 <a class="user-link" href="#">
-                    <img src="<?php echo base_url(); ?>assets/img/no-image.png"  class="image-circle" alt=""/>
+                    <?php if(isset($user['txt_photo']) && $user['txt_photo']!='')
+						{ ?>
+              <img src="<?php echo base_url()."upload/".$user['txt_photo'];?>" style="width:230px;height:180px;"  alt="User Image">
+				<?php }
+				else
+				
+			{?>
+              <img src="<?php echo base_url();?>upload/no-image.png" class="img-circle" alt="User Image">
+            <?php 
+			}?>     
                 </a>
                 <br />
                 <div class="media-body">
                     <h5 class="media-heading">
-					<?php echo $user['txt_name'];?>
+					<?php echo $user['txt_fname'];?>
 					</h5>
                     <ul class="list-unstyled user-info">
                         

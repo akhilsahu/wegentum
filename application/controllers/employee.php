@@ -14,12 +14,6 @@ public $user=array();
 		}
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
-	function index()
-	{
-		echo 'hi';
-	}
-	
-	
 	function dashboard()
 	{
 			$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
@@ -73,6 +67,7 @@ public $user=array();
 		$data["page"]="profile";
 		redirect('employee/dashboard', 'refresh');
 	}
+	
 	
 	function search()
 			{
@@ -140,7 +135,6 @@ public $user=array();
 		$pqr=$this->employeemodel->submit_cli($data);
 		$action="Client Added";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
-		echo "Data Inserted successfully";
 			
 	}
 	
@@ -211,7 +205,7 @@ public $user=array();
 		$pqr=$this->employeemodel->submit_doc($data);
 		$action="Document Added";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
-		echo "Data Inserted successfully";
+		redirect('employee/doc_list','refresh');
 	}
 	public function download($id)
 	{

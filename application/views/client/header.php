@@ -56,18 +56,19 @@
                 </header>
                 <!-- END LOGO SECTION -->
                 <ul class="nav navbar-top-links navbar-right">
-
                     <!-- MESSAGES SECTION -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="label label-success">2</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
+                            <span class="label label-success">5</span>    <i class="icon-envelope-alt"></i>&nbsp; <i class="icon-chevron-down"></i>
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
+						
                             <li>
+							
                                 <a href="#">
                                     <div>
-                                       <strong>John Smith</strong>
+                                       <strong><?php echo $user['txt_msg'];?></strong>
                                         <span class="pull-right text-muted">
                                             <em>Today</em>
                                         </span>
@@ -78,40 +79,12 @@
 
                                     </div>
                                 </a>
+								
                             </li>
-                            <li class="divider"></li>
+						
+                            
                             <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>Raphel Jonson</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                         <br />
-                                        <span class="label label-success"> Moderate </span> 
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>Chi Ley Suk</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>26 Jan 2014</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
-                                         <br />
-                                        <span class="label label-danger"> Low </span> 
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
+                                <a class="text-center" href="<?php echo site_url();?>/client/log_grid">
                                     <strong>Read All Messages</strong>
                                     <i class="icon-angle-right"></i>
                                 </a>
@@ -266,8 +239,7 @@
 
                     </li>
                     <!-- END ALERTS SECTION -->
-
-                    <!--ADMIN SETTINGS SECTIONS -->
+					<!--ADMIN SETTINGS SECTIONS -->
 
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -275,9 +247,9 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> User Profile </a>
+                            <li><a href="<?php echo site_url();?>/client/profile"><i class="icon-user"></i> User Profile </a>
                             </li>
-                           
+                            
                             <li class="divider"></li>
                             <li><a href="<?php echo site_url();?>/auth/logout"><i class="icon-signout"></i> Logout </a>
                             </li>
@@ -290,4 +262,3 @@
             </nav>
 
         </div>
-        <!-- END HEADER SECTION -->

@@ -19,7 +19,6 @@ $("document").ready(function(){
 
         if (r == true) {
         var id = id;
-		alert(id);
         $.ajax({
             url:"<?php echo site_url().'/admin/delete_doc/';?>"+id,
             success:function(data)
@@ -173,11 +172,10 @@ ul.rig.columns-4 li {
 
 <body>
 		<form action="<?php echo site_url();?>/admin/search" method="post" 
-		onclick="search_bar" enctype="multipart/form-data">
-		<input type="search" name="search" id="search" placeholder="what are you looking for ?"/>
+		onclick="search_bar" enctype="multipart/form-data"><br/><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" placeholder="what are you looking for ?"/>
 		<input type="submit" name="submit" id="btn_search" value="Search">
 		</form>
-<div class="wrapper">
 
 	<div class="container">
 		
