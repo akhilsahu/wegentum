@@ -51,7 +51,7 @@
                 <!-- LOGO SECTION -->
                 <header class="navbar-header">
 
-                    <a href="#"><label>WEGENTUM LOGIN</label></a>
+                    <a href="#"><img src="<?php echo base_url().'assets/img/logo.png';?>" style="width:150px;height:50px;"></a>
 					
                 </header>
                 <!-- END LOGO SECTION -->
@@ -64,23 +64,24 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-messages">
-						<?php foreach($log as $val)
+						<?php foreach($log as $user)
 						{ ?>
                             <li>
-							
                                 <a href="#">
                                     <div>
-                                       <strong><?php echo $val['txt_msg'];?></strong>
-									   <br/>
+                                       <strong><?php echo $user['txt_msg'];?></strong>
                                         <span class="pull-right text-muted">
-                                            <em><?php echo $val['dt_timestamp'];?></em>
+                                            <em>Today</em>
                                         </span>
+                                    </div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing.
+                                        <br />
+                                        <span class="label label-primary">Important</span> 
+
                                     </div>
                                 </a>
                             </li>
-							<?php
-							}	?>
-                           
+						<?php } ?>
                             
                             <li>
                                 <a class="text-center" href="<?php echo site_url();?>/employee/log_grid">
