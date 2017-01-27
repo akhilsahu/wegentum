@@ -11,21 +11,40 @@ function Admin()
 		{
 			redirect('auth/index', 'refresh');	
 		}
-		
+		elseif($response['isloggedin']=0)
+		{
+				redirect('admin/lockscreen','refresh');
+		}
+			
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
 	
 	function dashboard()
 	{
 			$data['log']=$this->logmodel->top_five();
-			//print_r($data);exit;
 			$data['records_emp']=$this->adminmodel->no_emp_records($this->user['int_user_id']);
 			$data['records_cli']=$this->adminmodel->no_cli_records($this->user['int_user_id']);
-			//print_r($data);exit;
 			$data["page"]="admdashboard";
 			$this->load->view('admin/page',$data);
-			
+	}
+	
+	function log_grid()
+	{
 		
+				$data["page"]="log_grid";
+				$data['users']=$this->logmodel->log_details($pqr);
+				$data=$this->load->view('admin/page',$data);
+			
+	}
+	function import()
+	{
+		$data['page']="import";
+		$this->load->view('admin/page',$data);
+	}
+	function upload_stocks()
+	{
+		$data['page']="upload_stocks";
+		$this->load->view('admin/page',$data);
 	}
 	
 	function profile()
@@ -122,15 +141,7 @@ function Admin()
 				$data=$this->load->view('admin/page',$data);
 			
 	}
-	function log_grid()
-	{
-		
-				$data["page"]="log_grid";
-				$data['users']=$this->logmodel->log_details($pqr);
-				$data=$this->load->view('admin/page',$data);
-			
-	}
-		
+	
 	
 	function submit_employee()
 	{
@@ -186,18 +197,23 @@ function Admin()
 	function submit_cli()
 	{
 		$data=$this->input->post();
+		//print_r($data);exit;
 		//print_r($_FILES);exit;
-		if($_FILES['img1']['name']!='')
+		if($_FILES['photo']['name']!='')
 		{
-			$image_name_string=$_FILES['img1']['name'];
+			$image_name_string=$_FILES['photo']['name'];
 			$image_name_array=explode(".",$image_name_string);
 			$ext=$image_name_array[count($image_name_array)-1];
+		
 			$filename='upload/'.date("YmdHis").".".$ext;
-			move_uploaded_file($_FILES['img1']['tmp_name'],$filename);
+			move_uploaded_file($_FILES['photo']['tmp_name'],$filename);
 			$data['filename']=$filename;
 		}
-		
-		elseif($_FILES['img2']['name']!='')
+		else
+		{
+			$data['filename']='';
+		}
+		/*elseif($_FILES['img2']['name']!='')
 		{
 			$image_name_string=$_FILES['img2']['name'];
 			$image_name_array=explode(".",$image_name_string);
@@ -240,7 +256,7 @@ function Admin()
 		else
 		{
 			$data['filename']='';
-		}
+		}*/
 		
 			
 		$pqr=$this->adminmodel->submit_cli($data);
@@ -298,6 +314,7 @@ function Admin()
 	function submit_doc()	
 	{
 		$data=$this->input->post();
+		print_r($_FILES);exit;
 		if($_FILES['file']['name']!='')
 		{
 			$image_name_string=$_FILES['file']['name'];
@@ -342,6 +359,26 @@ function Admin()
 		$action="Document Deleted";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('admin/doc_list','refresh');
+	}
+	
+	function view_feedback($id)
+	{
+		//print_r($id);exit;
+		$data['page']="feedback_grid";
+		$data['users']=$this->adminmodel->get_all_feedback($this->user['int_user_id']);
+		$this->load->view('admin/page',$data);
+	}
+	function get_feedback($id)
+	{ 
+		//echo "hi";
+		//print_r($id);exit;
+		//$data['page']="feedback_grid";
+		$data['details']=$this->adminmodel->get_feedback($id);
+			echo json_encode($data['details']);
+			
+		//print_r($data);exit;
+		//$this->load->view('admin/page',$data);		
+		
 	}
 }
 ?>

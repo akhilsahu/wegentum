@@ -107,9 +107,13 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="<?php echo site_url();?>/admin/profile"><i class="icon-user"></i> User Profile </a>
                             </li>
+							<li class="divider"></li>
                             <li><a href="<?php echo site_url();?>/admin/settings"><i class="icon-gear"></i> Settings </a>
                             </li>
                             <li class="divider"></li>
+							 <li><a href="<?php echo site_url();?>/auth/lock_screen"><i class="icon-signout"></i> Lock Screen </a>
+                            </li>
+							<li class="divider"></li>
                             <li><a href="<?php echo site_url();?>/auth/logout"><i class="icon-signout"></i> Logout </a>
                             </li>
                         </ul>

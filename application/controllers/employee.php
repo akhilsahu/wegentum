@@ -16,7 +16,6 @@ public $user=array();
     }
 	function dashboard()
 	{
-			$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 			$data["page"]="empdashboard";
 			//$data['user']=$user;
 			$this->load->view('employee/page',$data);
@@ -28,7 +27,6 @@ public $user=array();
 		
 				$data["page"]="emp_log_grid";
 				$data['users']=$this->logmodel->emp_log_details($this->user['int_user_id']);
-				//print_r($data);exit;
 				$data=$this->load->view('employee/page',$data);
 			
 	}

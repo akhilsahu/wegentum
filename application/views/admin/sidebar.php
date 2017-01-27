@@ -92,11 +92,16 @@
                     </ul>
                 </li>
 				
-				
-				 
-
+				 <li class="panel active">
+                    <a href="<?php echo site_url();?>/admin/import">
+                        <i class="icon-table"></i> Import
+                    </a>                   
+                </li>
+				<li class="panel active">
+                    <a href="<?php echo site_url();?>/admin/view_feedback">
+                        <i class="icon-table"></i> View Feedback
+                    </a>                   
+                </li>
             </ul>
-			
-			
 				</div>
         <!--END MENU SECTION -->

@@ -1,10 +1,9 @@
 <?php
 $user=$this->session->userdata('user');
-//print_r($user);exit;
 ?>
 <div class="content-wrapper">
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8" style="background-color:white;">
       <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Edit Profile</h3>
@@ -66,7 +65,7 @@ $user=$this->session->userdata('user');
                       <div class="col-sm-8">
                         <input type="file" id="profile_image" name="profile_image" class="form-control">
                        <?php if($user[txt_photo]!=''){?>
-                        <img src="<?php echo base_url()."upload/".$user[txt_photo]; ?>" alt="profile-image" class="img-circle" style="width:100px;height:100px;">  
+                        <img src="<?php echo base_url().$user[txt_photo]; ?>" alt="profile-image" class="img-circle" style="width:100px;height:100px;">  
                         <?php }?>
                       </div>
                     </div>

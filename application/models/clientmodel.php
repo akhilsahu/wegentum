@@ -10,6 +10,18 @@ class clientmodel extends CI_Model
         parent::__construct();
     }
 
+	function check_lockscreen($data) 
+	{
+		//print_r($data);exit;
+        $sql = "select * from tab_clients where txt_password='".md5($data['password'])."'";
+        $query = $this->db->query($sql);
+		//print_r($query);exit;
+         $result = $query->row_array();
+		// print_r($result);exit;
+		return $result;
+
+    }
+	
     function check($data) 
 	{
 		//print_r($data);exit;
@@ -109,6 +121,18 @@ class clientmodel extends CI_Model
 	function delete_doc($id)
 	{
 		$query="DELETE FROM tab_documents where int_user_id='$id'";
+		$result=$this->db->query($query);
+		return $result;
+	}
+	function add_feedback($data)
+	{
+		$name=$data['name'];
+		$title=$data['title'];
+		$email=$data['email'];
+		$description=$data['description'];
+		$sql="insert into tab_feedback values(Default,'$name','$title','$email','$description','".date('Y-m-d H:i:s')."')";
+		$result=$this->db->query($sql);
+		return $result;
 		$result=$this->db->query($query);
 		return $result;
 	}

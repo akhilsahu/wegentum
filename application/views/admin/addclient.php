@@ -82,32 +82,32 @@
 										<div class="form-group">
                                             <label>Photo</label>
                                             <input type="file" class="form-control"
-											name="img1">
+											name="photo">
                                         </div>
 										<div class="form-group">
                                             <label>Signature Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img2">
+											name="image[]">
                                         </div>
 										<div class="form-group">
                                             <label>Pan Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img3">
+											name="image[]">
                                         </div>
 										<div class="form-group">
                                             <label>ID Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img4">
+											name="image[]">
                                         </div>
 										<div class="form-group">
                                             <label>ID Back Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img5">
+											name="image[]">
                                         </div>
 										<div class="form-group">
                                             <label>Cheque Photo</label>
                                             <input type="file" class="form-control" placeholder="Enter Photo"
-											name="img6">
+											name="image[]">
                                         </div>
 									
 										<div class="form-group">

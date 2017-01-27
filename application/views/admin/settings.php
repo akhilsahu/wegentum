@@ -1,7 +1,7 @@
 
 <div class="content-wrapper">
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8" style="background-color:white;>
       <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Settings</h3>

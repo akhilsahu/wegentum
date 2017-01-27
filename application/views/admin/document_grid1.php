@@ -4,7 +4,7 @@ $("document").ready(function(){
 	$("#btn_search").click(function(){
 		if($("#search").val()=="")
 		{
-			alert("Please enter some value in serach box");
+			alert("Please enter some value in search box");
 			$("#search").focus();
 			return false;
 		}
@@ -172,11 +172,11 @@ ul.rig.columns-4 li {
 
 <body>
 		<form action="<?php echo site_url();?>/admin/search" method="post" 
-		onclick="search_bar" enctype="multipart/form-data"><br/><br/>
+		onclick="search_bar" enctype="multipart/form-data"><br/>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="search" name="search" id="search" placeholder="what are you looking for ?"/>
 		<input type="submit" name="submit" id="btn_search" value="Search">
 		</form>
-
+<br/><br/>
 	<div class="container">
 		
 		<div id="four-columns" class="grid-container" style="display:block;">

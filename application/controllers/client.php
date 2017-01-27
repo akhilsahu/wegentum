@@ -129,6 +129,17 @@ function client()
 		$action="Document Deleted";
 		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
 	}
+	function add_feedback()
+	{
+		$data['page']="feedback";
+		$this->load->view('client/page',$data);
+	}
+	function submit_feedback()
+	{
+		$data=$this->input->post();
+		$data['result']=$this->clientmodel->add_feedback($data);
+		redirect('client/dashboard','refresh');
+	}
 }
 ?>
 

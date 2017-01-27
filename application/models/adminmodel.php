@@ -10,6 +10,18 @@ class adminmodel extends CI_Model
         parent::__construct();
     }
 
+	function check_lockscreen($data) 
+	{
+		//print_r($data);exit;
+        $sql = "select * from tab_users where txt_password='".md5($data['password'])."'";
+        $query = $this->db->query($sql);
+		//print_r($query);exit;
+         $result = $query->row_array();
+		// print_r($result);exit;
+		return $result;
+
+    }
+	
     function check($data) 
 	{
 		//print_r($data);exit;
@@ -170,14 +182,14 @@ class adminmodel extends CI_Model
 		$landline=$data['landline'];
 		$phone_no=$data['phone_no'];
 		$email=$data['email'];
-		//$filename=$data['filename'];
+		//$photo=$data['filename'];
 		//$filename1=$data['filename'];
-		$photo=$data['img1'];
-		$sig_photo=$data['img2'];
+		$photo=$data['photo'];
+		/*$sig_photo=$data['img2'];
 		$pan_photo=$data['img3'];
 		$id_photo=$data['img4'];
 		$id_back_photo=$data['img5'];
-		$cheque_photo=$data['img6'];
+		$cheque_photo=$data['img6'];*/
 		$father_name=$data['father_name'];
 		$mother_name=$data['mother_name'];
 		$gender=$data['gender'];
@@ -221,6 +233,7 @@ class adminmodel extends CI_Model
 	{
 		//print_r($id);exit;
 		$query="select * from tab_clients where int_client_id='$id'";
+	//	print_r($query);exit;
 		$abc=$this->db->query($query);
 		//print_r($abc);exit;
 		//$query=$this->db->query($abc)
@@ -296,6 +309,28 @@ class adminmodel extends CI_Model
 	{
 		$query="DELETE FROM tab_documents where int_user_id='$id'";
 		$result=$this->db->query($query);
+		return $result;
+	}
+	
+	function get_all_feedback($id)
+	{
+		//print_r($document_id);exit;
+		$sql="select * from tab_feedback where int_feedback_id!='$id'";
+		//print_r($sql);exit;
+		$query=$this->db->query($sql);
+		$result=$query->result_array();
+		//print_r($result);exit;
+		return $result;
+	}
+	
+	function get_feedback($id)
+	{
+		//print_r($id);exit;
+		$sql="select * from tab_feedback where int_feedback_id='$id'";
+		//print_r($sql);exit;
+		$query=$this->db->query($sql);
+		$result=$query->row_array();
+		//print_r($result);exit;
 		return $result;
 	}
 	
