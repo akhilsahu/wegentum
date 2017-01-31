@@ -40,10 +40,6 @@ public	function ExcelDataAdd()	{
 		 $nrColumns . ' columns (A-' . $highestColumn . ') ';
 		' and ' . $highestRow . ' row.';
 		'<br>Data: <table border="1"><tr>';
-		//echo $worksheet[0];exit;
-		//if($worksheet['client_code']!='')
-			//print_r($highestRow[2]);exit;
-			
 		for ($row = 1; $row <= $highestRow; ++ $row) {
 			'<tr>';
 			
@@ -96,6 +92,7 @@ public	function ExcelDataAdd()	{
 			
 			 /* 1 pra $data_user=array('date'=>$val1, 'client_code'=>$val2 ,'symbol'=>$val3 ,'scrip_code'=>$val4 , 'quantity'=>$val5,'closing_price'=>$val6,'total_value'=>$val7,'gcml_non_poa'=>$val8);*/
 			  $this->excel_data_insert_model->Add_User($data_user);
+			
 		}
 		 '</table>';
 		

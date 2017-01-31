@@ -9,17 +9,6 @@ class employeemodel extends CI_Model
 	{
         parent::__construct();
     }
-	function check_lockscreen($data) 
-	{
-		//print_r($data);exit;
-        $sql = "select * from tab_users where txt_password='".md5($data['password'])."'";
-        $query = $this->db->query($sql);
-		//print_r($query);exit;
-         $result = $query->row_array();
-		// print_r($result);exit;
-		return $result;
-
-    }
 
     function check($data) 
 	{

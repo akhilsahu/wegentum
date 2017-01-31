@@ -7,6 +7,7 @@ function client()
 		$this->load->model('clientmodel');
 		$this->load->model('logmodel');
 		$this->user=$this->session->userdata('user');
+		//print_r($this->user);exit;
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
 	
@@ -21,7 +22,7 @@ function client()
 	
 	function log_grid()
 	{
-		
+				$data['log']=$this->logmodel->cli_top_five($this->user['int_client_id']);
 				$data["page"]="cli_log_grid";
 				$data['users']=$this->logmodel->cli_log_details($this->user['int_client_id']);
 				$data=$this->load->view('client/page',$data);
@@ -30,6 +31,7 @@ function client()
 	
 	function profile()
 	{
+		$data['log']=$this->logmodel->cli_top_five($this->user['int_client_id']);
 		$user=$this->session->userdata('user');
 		//print_r($user);exit;
 		if(isset($user['int_client_id']) && $user['int_client_id']!='')
@@ -56,7 +58,7 @@ function client()
 				$data['file_name']=$file_name;
 			}
 		}
-		$status=$this->adminmodel->update_profile($data);
+		$status=$this->clientmodel->update_profile($data);
 		$data["page"]="profile";
 		redirect('client/dashboard', 'refresh');
 	}
@@ -75,7 +77,7 @@ function client()
 	
 	function add_doc()
 	{
-		
+				$data['log']=$this->logmodel->cli_top_five($this->user['int_client_id']);
 				$data["page"]="add_document";
 				$data=$this->load->view('client/page',$data);
 			
@@ -84,7 +86,6 @@ function client()
 	function submit_doc()
 	{
 		$data=$this->input->post();
-		
 		if($_FILES['file']['name']!='')
 		{
 			$image_name_string=$_FILES['file']['name'];
@@ -100,7 +101,7 @@ function client()
 		}
 		
 		$pqr=$this->clientmodel->submit_doc($data);
-		$action="Document Added";
+		$action="Document"." ".$data['title']." "."Added"." "."By"." ".$this->user['txt_fname']." ".$this->user['txt_mname']." ".$this->user['txt_lname'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
 		redirect('client/doc_list','refresh');
 		
@@ -111,11 +112,11 @@ function client()
 		$this->load->helper('download');
 		force_download($data['result']['Uploaded_File'], NULL);
 		$action="Document Downloaded";
-		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],3);
 	}
 	
 	function doc_list()
 	{
+		$data['log']=$this->logmodel->cli_top_five($this->user['int_client_id']);
 		$data["page"]="document_grid";
 		$data['users']=$this->clientmodel->get_all_documents($this->user['int_client_id']);
 		$data=$this->load->view('client/page',$data);
@@ -125,12 +126,14 @@ function client()
 	function delete_doc($id)
 	{
 		$data=$this->clientmodel->delete_doc($id);
-		redirect('client/doc_list','refresh');
-		$action="Document Deleted";
+		//print_r($data);exit;
+		$action="Document"." "."Deleted"." "."By"." ".$this->user['txt_fname']." ".$this->user['txt_mname']." ".$this->user['txt_lname'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
+		redirect('client/doc_list','refresh');
 	}
 	function add_feedback()
 	{
+		$data['log']=$this->logmodel->cli_top_five($this->user['int_client_id']);
 		$data['page']="feedback";
 		$this->load->view('client/page',$data);
 	}
@@ -138,6 +141,8 @@ function client()
 	{
 		$data=$this->input->post();
 		$data['result']=$this->clientmodel->add_feedback($data);
+		$action="Feedback"." ".$data['name']." "."Added"." "."By"." ".$this->user['txt_fname']." ".$this->user['txt_mname']." ".$this->user['txt_lname'];
+		$abc=$this->logmodel->insertlog($action,$this->user['int_client_id'],3);
 		redirect('client/dashboard','refresh');
 	}
 }

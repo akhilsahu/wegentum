@@ -248,7 +248,9 @@
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="<?php echo site_url();?>/client/profile"><i class="icon-user"></i> User Profile </a>
                             </li>
-                            
+                             <li class="divider"></li>
+							<li><a href="<?php echo site_url();?>/auth/cli_lock_screen"><i class="icon-signout"></i> Lock Screen </a>
+                            </li>
                             <li class="divider"></li>
                             <li><a href="<?php echo site_url();?>/auth/logout"><i class="icon-signout"></i> Logout </a>
                             </li>

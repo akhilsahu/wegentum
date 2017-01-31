@@ -12,8 +12,9 @@ class adminmodel extends CI_Model
 
 	function check_lockscreen($data) 
 	{
-		//print_r($data);exit;
-        $sql = "select * from tab_users where txt_password='".md5($data['password'])."'";
+		//print_r($user);exit;
+		$user=$this->session->userdata('user');
+        $sql = "select * from tab_users where txt_password='".md5($data['password'])."' and txt_email='".$user['txt_email']."'";
         $query = $this->db->query($sql);
 		//print_r($query);exit;
          $result = $query->row_array();
@@ -182,6 +183,7 @@ class adminmodel extends CI_Model
 		$landline=$data['landline'];
 		$phone_no=$data['phone_no'];
 		$email=$data['email'];
+		$pswd=$data['password'];
 		//$photo=$data['filename'];
 		//$filename1=$data['filename'];
 		$photo=$data['photo'];
@@ -212,7 +214,7 @@ class adminmodel extends CI_Model
 		$permanent_state=$data['permanent_state'];
 		$permanent_country=$data['permanent_country'];
 		
-		$sql="insert into tab_clients values(DEFAULT,'$fname','$mname','$lname','$current_address1','$current_address2','$city','$pincode','$state','$country','$dob','$landline','$phone_no','$email','$photo','$sig_photo','$pan_photo','$id_photo','$id_back_photo','$cheque_photo','$father_name','$mother_name','$gender','$status','$nationality','$pan_no','$annual_income','$nominee_name','$nominee_relation','$nominee_allocation','$bank_name','$bank_type','$bank_acc_no','$bank_ifsc_code','$bank_address','$permanent_address','$alternate_address','$permanent_city','$permanent_zip_code','$permanent_state','$permanent_country','','','')";
+		$sql="insert into tab_clients values(DEFAULT,'$fname','$mname','$lname','$current_address1','$current_address2','$city','$pincode','$state','$country','$dob','$landline','$phone_no','$email','$pswd','$photo','$sig_photo','$pan_photo','$id_photo','$id_back_photo','$cheque_photo','$father_name','$mother_name','$gender','$status','$nationality','$pan_no','$annual_income','$nominee_name','$nominee_relation','$nominee_allocation','$bank_name','$bank_type','$bank_acc_no','$bank_ifsc_code','$bank_address','$permanent_address','$alternate_address','$permanent_city','$permanent_zip_code','$permanent_state','$permanent_country','','','')";
 		//print_r($sql);exit;
 		$result=$this->db->query($sql);
 	//	print_r($result);exit;
@@ -325,12 +327,9 @@ class adminmodel extends CI_Model
 	
 	function get_feedback($id)
 	{
-		//print_r($id);exit;
 		$sql="select * from tab_feedback where int_feedback_id='$id'";
-		//print_r($sql);exit;
 		$query=$this->db->query($sql);
 		$result=$query->row_array();
-		//print_r($result);exit;
 		return $result;
 	}
 	

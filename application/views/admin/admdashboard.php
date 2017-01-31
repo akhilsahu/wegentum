@@ -1,3 +1,10 @@
+<style>
+#content {
+    width: calc(100% - 440px);
+  }
+</style>
+
+
 <!--PAGE CONTENT -->
         <div id="content">
              

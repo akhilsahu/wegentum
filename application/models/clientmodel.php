@@ -13,7 +13,10 @@ class clientmodel extends CI_Model
 	function check_lockscreen($data) 
 	{
 		//print_r($data);exit;
-        $sql = "select * from tab_clients where txt_password='".md5($data['password'])."'";
+		$user=$this->session->userdata('user');
+		//print_r($user);exit;
+		
+      $sql = "select * from tab_clients where lower(txt_email)='".$user['txt_email']."' and txt_password='".md5($data['password'])."'";
         $query = $this->db->query($sql);
 		//print_r($query);exit;
          $result = $query->row_array();
@@ -22,10 +25,11 @@ class clientmodel extends CI_Model
 
     }
 	
+	
     function check($data) 
 	{
 		//print_r($data);exit;
-        $sql = "select * from tab_clients where lower(txt_email)='".strtolower($data['email'])."'";
+        $sql = "select * from tab_clients where lower(txt_email)='".strtolower($data['email'])."' and txt_password='".md5($data['password'])."'";
 		
         $query = $this->db->query($sql);
 		//print_r($query);exit;
@@ -37,14 +41,14 @@ class clientmodel extends CI_Model
 	
 	function update_profile($data)
 	{
-		/*if($data['old_password']!=$data['password'])
+		if($data['old_password']!=$data['password'])
 		{
 			$password=md5($data['password']);
 		}
 		else
 		{
 			$password=$data['old_password'];
-		}*/
+		}
 		$extra_query='';
 		if($data['file_name']!='')
 		{

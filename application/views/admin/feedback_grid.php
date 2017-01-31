@@ -118,7 +118,7 @@ foreach($users as $user)
 										
 										<div class="form-group">
                                             <label>Description</label>
-											<input class="form-control" readonly id=" description" name="description">
+											<input class="form-control" readonly id="description" name="description">
 											
                                         </div>
         </div>
@@ -130,41 +130,34 @@ foreach($users as $user)
     </div>
   </div>
   
-  
   <script>
-   function submit_feedback(id)
-    {
-		//	alert("hi");
-        var id = id;
-		//alert(id);
-        $.ajax({
-			type:'POST',
-			 url:"<?php echo site_url().'/admin/get_feedback/'?>"+id,
-            success:function(data)
-            {    //alert(data.int_feedback_id);
+ function submit_feedback(id)
+ {
+	var id=id;
+		$.ajax({
+			url:"<?php echo site_url().'/admin/get_feedback/'?>"+id,
+			success:function(data)
+			{
 				if(data)
-				{	
-			var obj=JSON.parse(data);
-						//console.log(obj.txt_name);
-						//alert(data);
-					$("#name").val(obj.txt_name);
-					$("#title").val(obj.txt_title);
-					$("#email").val(obj.txt_email);
-					$("#description").val(obj.txt_description);						
-					//alert(data);
+				{
+				var obj=JSON.parse(data);
+				//alert(obj);
+				$("#name").val(obj.txt_name);
+				$("#title").val(obj.txt_title);
+				$("#email").val(obj.txt_email);
+				$("#description").val(obj.txt_description);
 				}
 				else
 				{
-					alert("data not recieved");
+					alert("Data not Recieved");
 				}
-            },
+			},
 			error:function(response)
 			{
 				alert("failure");
 			},
-			});
-        
-    }
-</script> 
+		});
+ }
+  </script>
   
 </div>

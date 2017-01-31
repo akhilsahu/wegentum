@@ -3,7 +3,7 @@
                 <a class="user-link" href="#">
                     <?php if(isset($user['txt_photo']) && $user['txt_photo']!='')
 						{ ?>
-              <img src="<?php echo base_url().$user['txt_photo'];?>" style="width:230px;height:180px;"  alt="User Image">
+              <img src="<?php echo base_url()."upload/".$user['txt_photo'];?>" style="width:230px;height:180px;"  alt="User Image">
 				<?php }
 				else
 				
@@ -15,7 +15,7 @@
                 <br />
                 <div class="media-body">
                     <h5 class="media-heading">
-					<?php echo $user['txt_fname'];?>
+					<?php echo $user['txt_fname']." ".$user['txt_mname']." ".$user['txt_lname'];?>
 					</h5>
                     <ul class="list-unstyled user-info">
                         

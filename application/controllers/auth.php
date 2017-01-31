@@ -15,71 +15,65 @@ class auth extends CI_Controller{
 		
     }
 
-    function index(){
+    function index()
+	{
 		
         $this->load->view('admin/login');
     }
-	function lock_screen(){
+	
+	function lock_screen()
+	{
         $this->load->view('admin/lockscreen');
     }
 	
-	function verify1()
-	{
-	$data=$this->input->post();	
-		//print_r($data);exit;
+	function cli_lock_screen()
+	{	
+        $this->load->view('client/lockscreen');
+    }
 	
+	function verify_lockscreen()
+	{
+			$data=$this->input->post();	
+			//print_r($data);exit;
 			$response=$this->adminmodel->check_lockscreen($data);
 			if(count($response)>1)
-			{			
-				$this->session->set_userdata('user',$response);
-				redirect('admin/dashboard',refresh);
-
+			{		
 		
+				$response['isloggedin']=1;
+				$this->session->set_userdata('user',$response);
+				//print_r($this->session->userdata('user'));exit;
+				if($response['int_user_group']==1)
+				{
+				redirect('admin/dashboard',refresh);
+				
+				}
+				else if($response['int_user_group']==2)
+				{
+				redirect('employee/dashboard',refresh);
+				}
 			}
 			else
 			{
-				echo  "Invalid Password";
+				
+				redirect('auth/lock_screen','refresh');
 			}
 	}
 
-function verify2()
+	function client_lockscreen()
 	{
-	$data=$this->input->post();	
+		$data=$this->input->post();	
 		//print_r($data);exit;
 	
-			$response=$this->employeemodel->check_lockscreen($data);
+		$response=$this->clientmodel->check_lockscreen($data);
 			if(count($response)>1)
 			{			
 				$this->session->set_userdata('user',$response);
-				redirect('admin/dashboard',refresh);
-
-		
+				redirect('client/dashboard',refresh);
 			}
-			else
-			{
-				echo  "Invalid Password";
-			}
+			
 	}
 
-function verify3()
-	{
-	$data=$this->input->post();	
-		//print_r($data);exit;
-	
-			$response=$this->clientmodel->check_lockscreen($data);
-			if(count($response)>1)
-			{			
-				$this->session->set_userdata('user',$response);
-				redirect('admin/dashboard',refresh);
 
-		
-			}
-			else
-			{
-				echo  "Invalid Password";
-			}
-	}
-	
 	function verify()
 	{ 
 		$data=$this->input->post();	

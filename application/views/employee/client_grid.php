@@ -16,7 +16,6 @@ foreach($users as $user)
 						<td>'.$user['dt_dob'].'</td>
 						 <td>'.$user['txt_cell_no'].'</td>
 						<td>'.$user['txt_email'].'</td>
-						<td>'.$user['dt_added'].'</td>
 						<td>'.$user['txt_father_name'].'</td>
 						<td>'.$user['txt_mother_name'].'</td>
 						
@@ -119,8 +118,8 @@ foreach($users as $user)
 											<th>Father Name</th>
 											<th>Mother Name</th>
                                             <th>PAN No.</th>
-                                            <th>Annual Income</th>
-											<!--<th>Nominee Name</th>
+                                            <!--<th>Annual Income</th>
+											<th>Nominee Name</th>
                                             <th>Nominee Relation</th>
                                             <th>Gender</th>
 											 <th>Date</th>-->

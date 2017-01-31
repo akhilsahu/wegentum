@@ -78,7 +78,11 @@
 											name="email">
                                         </div>
 										
-										
+										<div class="form-group">
+                                            <label>Password</label>
+                                            <input class="form-control" placeholder="Enter Email"
+											name="password">
+                                        </div>
 										<div class="form-group">
                                             <label>Photo</label>
                                             <input type="file" class="form-control"

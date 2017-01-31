@@ -116,7 +116,7 @@
               <div class="panel widget">
                 <div class="panel-body">
                   <div class="login-icon no-bd"> <img class="img-circle" style="width:120px; height:120px; margin-top:-10px;" src="<?php echo base_url();?>/lockscreen/img/avatar/avatar.jpg" alt="avatar"> </div>
-                  <form class="form-horizontal" id="login-form" action="<?php echo site_url();?>/auth/verify3" role="form" method="post" enctype="multipart/form-data">
+                  <form class="form-horizontal" id="login-form" action="<?php echo site_url();?>/auth/client_lockscreen" role="form" method="post" enctype="multipart/form-data">
 				  
                   <div class="alert alert-danger vd_hidden">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="icon-cross"></i></button>
@@ -214,7 +214,18 @@
 <script type="text/javascript" src="<?php echo base_url();?>/lockscreen/js/theme.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>/lockscreen/custom/custom.js"></script>
  
-
+<script src="js/jquery-2.2.4.min.js"></script>
+<script>
+$("document").ready(function(){
+	$("#login-submit").click(function(){
+		
+			alert("Invalid Password");
+		
+			return false;
+		
+		});
+});
+</script>
 
 </body>
 </html>

@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8">
-  <title>Import Excel To Mysql Database Using PHP </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="title" content="Hemant Vishwakarma">
-  <meta name="description" content="Import Excel File To MySql Database Using php">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- </head>
  <body>    
     <br><br>
         <div class="container">
@@ -18,10 +10,10 @@
                             <legend>Import CSV/Excel file</legend>
                             <div class="control-group">
                                 <div class="control-label">
-                                    <label>CSV/Excel File:</label>
+                                    <label>Please Select Only Excel File:</label>
                                 </div>
                                 <div class="controls form-group">
-                                    <input type="file" name="userfile" id="userfile" class="input-large form-control">
+                                    <input type="file" name="userfile" id="userfile" class="input-large form-control" placeholder="Plse Select Only Excel File">
                                 </div>
                             </div>
                             
@@ -38,5 +30,3 @@
         </div>
  </body>
 </html>
-
-	

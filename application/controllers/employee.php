@@ -7,15 +7,21 @@ public $user=array();
 		$this->load->model('employeemodel');
 		$this->load->model('logmodel');
 		$this->user=$this->session->userdata('user');
+		//print_r($this->user);exit;
 		
 		if($this->user['int_user_id']=='' && $this->user['int_user_group']!=2 )
 		{
 			redirect('auth/index', 'refresh');	
 		}
+		elseif($response['isloggedin']=0)
+		{
+				redirect('auth/lock_screen','refresh');
+		}
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
     }
 	function dashboard()
-	{
+	{	
+			$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 			$data["page"]="empdashboard";
 			//$data['user']=$user;
 			$this->load->view('employee/page',$data);
@@ -33,7 +39,8 @@ public $user=array();
 		
 	
 	function profile()
-	{
+	{	
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$user=$this->session->userdata('user');
 		//print_r($user);exit;
 		if(isset($user['int_user_id']) && $user['int_user_id']!='')
@@ -48,7 +55,8 @@ public $user=array();
 	}
 
 	function profile_update()
-	{
+	{	
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data=$this->input->post();
 		//print_r($data);exit;		
 		$data['file_name']='';
@@ -91,7 +99,7 @@ public $user=array();
 	
 	function addcli()
 	{
-		
+				$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 				$data["page"]="addclient";
 				$data=$this->load->view('employee/page',$data);
 			
@@ -99,6 +107,7 @@ public $user=array();
 	
 	function submit_cli()
 	{
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data=$this->input->post();
 		//print_r($_FILES);exit;
 		/*if($_FILES['image']['name']!='')
@@ -131,14 +140,13 @@ public $user=array();
 			}
 			
 		$pqr=$this->employeemodel->submit_cli($data);
-		$action="Client Added";
+		$action="Client"." ".$data['name']." "."Added"." "."By"." ".$this->user['txt_name'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
-			
 	}
 	
 	function cli_list()
 	{
-
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data["page"]="client_grid";
 		$user=$this->user;
 		$data['users']=$this->employeemodel->get_all_clients($user['int_user_id']);
@@ -149,6 +157,7 @@ public $user=array();
 	
 	function edit_client()
 	{
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$id=$this->input->get(id);
 		//print_r($id);exit;
 		$data["page"]="client_edit";
@@ -157,19 +166,21 @@ public $user=array();
 			
 	}
 	function update_client()
-	{
+	{	
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data=$this->input->post();
 		$result=$this->employeemodel->update_client_ind($data);
-		$action="Client Updated";
+		$action="Client"." ".$data['name']." "."Updated"." "."By"." ".$this->user['txt_name'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('employee/cli_list','refresh');
 		
 	}
 	function delete_client()
-	{
+	{	
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$id=$this->input->get(id);
 		$data=$this->employeemodel->delete_records($id);
-		$action="Client Deleted";
+		$action="Client"." "."Updated"." "."By"." ".$this->user['txt_name'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('employee/cli_list','refresh');
 		//redirect('employee/cli_list','refresh');
@@ -177,14 +188,16 @@ public $user=array();
 	
 	function add_doc()
 	{
-		
+				$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 				$data["page"]="add_document";
 				$data=$this->load->view('employee/page',$data);
 			
 	}
 	
 	function submit_doc()
-	{
+	{	
+		
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data=$this->input->post();
 		if($_FILES['file']['name']!='')
 		{
@@ -201,12 +214,12 @@ public $user=array();
 		}
 		
 		$pqr=$this->employeemodel->submit_doc($data);
-		$action="Document Added";
+		$action="Document"." ".$data['name']." "."Added"." "."By"." ".$this->user['txt_name'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		redirect('employee/doc_list','refresh');
 	}
 	public function download($id)
-	{
+	{	
 		$data['result'] = $this->employeemodel->download_doc($id);		
 		 $this->load->helper('download');
 		   force_download($data['result']['Uploaded_File'], NULL);
@@ -214,9 +227,8 @@ public $user=array();
 	
 	function doc_list()
 	{
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data["page"]="document_grid";
-		//$user=$this->user[''];
-		//print_r($this->user['int_user_id']);exit;
 		$data['users']=$this->employeemodel->get_all_documents($this->user['int_user_id']);
 		$data=$this->load->view('employee/page',$data);
 			
@@ -224,9 +236,11 @@ public $user=array();
 	
 	function delete_doc($id)
 	{
+		$data['log']=$this->logmodel->emp_top_five($this->user['int_user_id']);
 		$data=$this->employeemodel->delete_doc($id);
 		redirect('employee/doc_list','refresh');
 		$action="Document Deleted";
+		$action="Document"." "."Deleted"." "."By"." ".$this->user['txt_name'];
 		$abc=$this->logmodel->insertlog($action,$this->user['int_user_id'],$this->user['int_user_group']);
 		//redirect('employee/cli_list','refresh');
 	}

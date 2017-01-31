@@ -34,8 +34,8 @@ class Logmodel extends CI_Model
 		LIMIT 5 ";
 		//print_r($sql);exit;
 		$query=$this->db->query($sql);
-		$response=$query->result_array();
-		//print_r($response);exit;
+		$response['abc']=$query->result_array();
+		$response['pqr']=count($query->result_array());
 		return $response;
 	}
 	function cli_top_five($logid)
